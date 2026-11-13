@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "task_id": "T001",
+  "board_id": "raspberry_pi_4",
+  "case_shape": "rectangular",
+  "lid": {
+    "present": true,
+    "style": "removable"
+  },
+  "port_requirements": [
+    {
+      "port_type": "usb",
+      "requested_side": "unspecified",
+      "count": null
+    }
+  ],
+  "mounting": {
+    "wall_mount_hole_count": null
+  },
+  "wall_thickness_mm": null,
+  "needs_clarification": false,
+  "clarification_questions": [],
+  "assumptions": [
+    "Board dimensions and connector positions require verified reference data."
+  ]
+}
