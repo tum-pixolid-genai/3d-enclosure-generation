@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pixolid Text Design Request v0.1",
+  "description": "Proposed text-only request contract, pending team and partner review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "request_text"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+      "description": "Stable identifier assigned by the benchmark/backend, not by the LLM."
+    },
+    "request_text": {
+      "type": "string",
+      "minLength": 10,
+      "description": "User's verbatim natural-language enclosure request."
+    },
+    "language": {
+      "type": "string",
+      "enum": ["en", "de", "zh"]
+    }
+  }
+}

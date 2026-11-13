@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pixolid Text-to-Design Output v0.1",
+  "description": "Proposed constraint extraction format. Passing this schema does not imply geometric or physical validity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "board_id",
+    "case_shape",
+    "lid",
+    "port_requirements",
+    "mounting",
+    "wall_thickness_mm",
+    "needs_clarification",
+    "clarification_questions",
+    "assumptions"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "board_id": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "description": "Canonical board identifier, null if unknown. Mechanical dimensions are not invented by the LLM."
+    },
+    "case_shape": {
+      "type": "string",
+      "enum": ["rectangular", "custom", "unspecified"]
+    },
+    "lid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "style"],
+      "properties": {
+        "present": { "type": ["boolean", "null"] },
+        "style": {
+          "type": "string",
+          "enum": ["removable", "snap_fit", "screwed", "unspecified"]
+        }
+      }
+    },
+    "port_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["port_type", "requested_side", "count"],
+        "properties": {
+          "port_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requested_side": {
+            "type": "string",
+            "enum": ["front", "back", "left", "right", "top", "bottom", "unspecified"]
+          },
+          "count": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "description": "Explicit user-requested count, otherwise null."
+          }
+        }
+      }
+    },
+    "mounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wall_mount_hole_count"],
+      "properties": {
+        "wall_mount_hole_count": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "External wall mounting holes, not internal PCB standoffs."
+        }
+      }
+    },
+    "wall_thickness_mm": {
+      "type": ["number", "null"],
+      "exclusiveMinimum": 0,
+      "description": "Only a value explicitly provided by the user. Use null otherwise."
+    },
+    "needs_clarification": { "type": "boolean" },
+    "clarification_questions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

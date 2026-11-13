@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "task_id": "T004",
+  "board_id": "raspberry_pi_4",
+  "case_shape": "rectangular",
+  "lid": {
+    "present": true,
+    "style": "removable"
+  },
+  "port_requirements": [
+    {
+      "type": "USB",
+      "side": "front",
+      "count": null
+    },
+    {
+      "type": "Ethernet",
+      "side": "front",
+      "count": null
+    }
+  ],
+  "mounting": {
+    "wall_mount_hole_count": 2
+  },
+  "wall_thickness_mm": null,
+  "needs_clarification": false,
+  "clarification_questions": [],
+  "assumptions": [
+    "USB and Ethernet opening counts are unspecified.",
+    "Wall thickness is unspecified.",
+    "Board dimensions, connector positions, and mounting-hole coordinates require verified reference data."
+  ]
+}
