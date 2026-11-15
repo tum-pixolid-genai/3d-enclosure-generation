@@ -7,12 +7,29 @@ BOARD_DATA = {
         "height_mm": 12.0,
     },
     "raspberry_pi_4": {
-        # Raspberry Pi 4 Model B PCB nominal footprint: approximately 85 x 56 mm.
-        # The 18 mm height is a PROVISIONAL component-envelope allowance,
-        # NOT a verified mechanical specification or connector clearance.
+        # PCB dimensions
         "width_mm": 85.0,
         "length_mm": 56.0,
-        "height_mm": 18.0,
+
+        # Component heights from mechanical reference
+        "usb_stack_height_mm": 16.0,
+        "ethernet_height_mm": 13.5,
+        "gpio_height_mm": 8.5,
+
+        # Mounting holes
+        "mounting_hole_diameter_mm": 2.7,
+        "mounting_hole_spacing_x_mm": 58.0,
+        "mounting_hole_spacing_y_mm": 49.0,
+        "mounting_hole_edge_offset_mm": 3.5,
+
+        # Port centre positions
+        "usb_ethernet_centres_mm": [9.0, 27.0, 45.75],
+
+        # Preliminary board height reference
+        "height_mm": 16.0,
+
+        # Enclosure mounting design
+        "standoff_height_mm": 3.0,
     },
 }
 
