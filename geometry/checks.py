@@ -1,3 +1,5 @@
+import math
+
 from geometry.cad_model import (
     create_enclosure,
     export_enclosure,
@@ -15,6 +17,10 @@ MIN_WALL_THICKNESS_MM = 1.2
 def check_geometry(design_spec):
     errors = []
     warnings = []
+
+    if not isinstance(design_spec, dict):
+        return {"task_id": None, "valid": False, "dimensions": None,
+                "errors": ["Design specification must be an object."], "warnings": []}
 
     # 1. Check whether clarification is required.
     if design_spec.get("needs_clarification", False):
@@ -42,18 +48,20 @@ def check_geometry(design_spec):
 
     if not isinstance(wall_thickness, (int, float)) or isinstance(wall_thickness, bool):
         errors.append("Wall thickness must be a number.")
+    elif not math.isfinite(wall_thickness):
+        errors.append("Wall thickness must be finite.")
     elif wall_thickness < MIN_WALL_THICKNESS_MM:
         errors.append("Wall thickness is below the minimum requirement.")
 
     # 5. Check unsupported features.
-    lid = design_spec.get("lid", {})
+    lid = design_spec.get("lid") or {}
     if lid.get("present") is True:
         warnings.append("Lid geometry is not implemented yet.")
 
     if design_spec.get("port_requirements"):
         warnings.append("Port alignment has not been verified.")
 
-    mounting = design_spec.get("mounting", {})
+    mounting = design_spec.get("mounting") or {}
     if mounting.get("wall_mount_hole_count") not in (None, 0):
         warnings.append("Wall mounting holes are not implemented yet.")
 
@@ -61,7 +69,7 @@ def check_geometry(design_spec):
     dimensions = None
 
     if board is not None and isinstance(wall_thickness, (int, float)) \
-            and not isinstance(wall_thickness, bool) and wall_thickness > 0:
+            and not isinstance(wall_thickness, bool) and math.isfinite(wall_thickness) and wall_thickness > 0:
 
         dimensions = {
             "inner_width_mm": board["width_mm"] + 2 * DEFAULT_CLEARANCE_MM,
