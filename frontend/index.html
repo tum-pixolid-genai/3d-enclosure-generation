@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixolid · AI 3D Case Designer</title>
+  </head>
+  <body>
+    <header><h1>AI 3D Case Designer</h1><p>Describe a case for your board. The system designs it, checks it, and shows the result.</p></header>
+    <main>
+      <section>
+        <label for="prompt">Design request</label>
+        <textarea id="prompt" rows="3">Make a rectangular case for Raspberry Pi 4 with a removable lid, USB and Ethernet openings on the front, and two wall-mount holes.</textarea>
+        <div id="chips"></div>
+        <div class="row">
+          <button id="go">Generate design</button>
+          <label class="mock">Mock result
+            <select id="scenario">
+              <option value="warnings">Generated, with warnings</option>
+              <option value="generated">Generated</option>
+              <option value="blocked">Blocked by geometry</option>
+              <option value="clarify">Needs clarification</option>
+            </select>
+          </label>
+        </div>
+        <ol id="steps"></ol>
+        <div id="verdicts"></div>
+        <div id="messages"></div>
+        <details><summary>Design spec</summary><dl id="spec"></dl><pre id="raw"></pre></details>
+      </section>
+      <section>
+        <div id="viewer"></div>
+        <div class="row"><button id="download" disabled>Download model</button><span id="dims"></span></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
