@@ -1,0 +1,5015 @@
+{
+  "benchmark_version": "0.1-draft",
+  "note": "Draft for team review. Port inventories per board are unverified against manufacturer drawings. 'expected' is what the user asked for, not a statement about physical fit.",
+  "n_tasks": 200,
+  "tasks": [
+    {
+      "task_id": "BM-PI4-001",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-001",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-002",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-002",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-003",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-003",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-004",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-004",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-005",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-005",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-006",
+      "board_id": "raspberry_pi_4",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-006",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-007",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-007",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-008",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-008",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-009",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-009",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-010",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-010",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-011",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-011",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-012",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-012",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and Ethernet openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-013",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-013",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-014",
+      "board_id": "raspberry_pi_4",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-014",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-015",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-015",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and power, Ethernet and HDMI openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "ethernet",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-016",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-016",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and HDMI, power and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-017",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-017",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and USB and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-018",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-018",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and HDMI, USB and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-019",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-019",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and USB and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-020",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-020",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and power, Ethernet and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-021",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-021",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and HDMI and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-022",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-022",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and Ethernet and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-023",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-023",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, HDMI openings on the back and Ethernet and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-024",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-024",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, power openings on the left and HDMI and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-025",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-025",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB openings on the left and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-026",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-026",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, HDMI openings on the left and Ethernet and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-027",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-027",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, HDMI openings on the left and Ethernet and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-028",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-028",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, power openings on the front and HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-029",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-029",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB openings on the right and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-030",
+      "board_id": "raspberry_pi_4",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-030",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, USB openings on the right and power and HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-031",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-031",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and HDMI openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-032",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-032",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and HDMI openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-033",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-033",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-034",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-034",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with no lid and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-035",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-035",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and Ethernet openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-036",
+      "board_id": "raspberry_pi_4",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-036",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-037",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-037",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, Ethernet and HDMI openings on the back and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-038",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-038",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, HDMI and Ethernet openings on the back and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-039",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-039",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, HDMI and USB openings on the front and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-040",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-040",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, USB and power openings on the right and three wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 3,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-041",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-041",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB and power openings on the left and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-042",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI4-042",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, Ethernet and USB openings on the left and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI4-043",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-043",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB openings on the back and 1.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 1.5
+      }
+    },
+    {
+      "task_id": "BM-PI4-044",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-044",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB openings on the back and 2 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.0
+      }
+    },
+    {
+      "task_id": "BM-PI4-045",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-045",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, Ethernet openings on the back and 2.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.5
+      }
+    },
+    {
+      "task_id": "BM-PI4-046",
+      "board_id": "raspberry_pi_4",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-046",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, Ethernet openings on the right and 3 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 3.0
+      }
+    },
+    {
+      "task_id": "BM-PI4-047",
+      "board_id": "raspberry_pi_4",
+      "category": "clarify_conflict_lid",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI4-047",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": true,
+        "reason": "conflicting lid instructions"
+      }
+    },
+    {
+      "task_id": "BM-PI4-048",
+      "board_id": "raspberry_pi_4",
+      "category": "clarify_missing_port",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI4-048",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid and VGA openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": true,
+        "reason": "VGA does not exist on this board"
+      }
+    },
+    {
+      "task_id": "BM-PI4-049",
+      "board_id": "raspberry_pi_4",
+      "category": "clarify_vague",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI4-049",
+        "request_text": "Make a nice case for my Raspberry Pi 4, something sturdy that looks good on a shelf.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": true,
+        "reason": "no checkable requirements"
+      }
+    },
+    {
+      "task_id": "BM-PI4-050",
+      "board_id": "raspberry_pi_4",
+      "category": "clarify_unsupported_unit",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI4-050",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a snap-fit lid and 0.08 inch wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "needs_clarification": true,
+        "reason": "inch unit / unusual thickness; confirm in mm"
+      }
+    },
+    {
+      "task_id": "BM-PI3-001",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-001",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-002",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-002",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-003",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-003",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-004",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-004",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-005",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-005",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-006",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-006",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-007",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-007",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-008",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-008",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-009",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-009",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-010",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-010",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-011",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-011",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-012",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-012",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-013",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-013",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-014",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-014",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-015",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-015",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and USB and HDMI openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-016",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-016",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and USB, power and HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-017",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-017",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and HDMI, USB and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-018",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-018",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and power, USB and HDMI openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-019",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-019",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and power and HDMI openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-020",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-020",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid and HDMI and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-021",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-021",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and power and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-022",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-022",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid and USB, Ethernet and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "ethernet",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-023",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-023",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, USB openings on the back and HDMI and Ethernet openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "ethernet",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-024",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-024",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, power openings on the front and USB and Ethernet openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "ethernet",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-025",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-025",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, power openings on the back and Ethernet and HDMI openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-026",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-026",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, USB openings on the right and HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-027",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-027",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, power openings on the right and HDMI and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-028",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-028",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, USB openings on the front and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-029",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-029",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, power openings on the front and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-030",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-030",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, HDMI openings on the front and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-031",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-031",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-032",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-032",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-033",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-033",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-034",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-034",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with no lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-035",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-035",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and Ethernet openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-036",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-036",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid and Ethernet openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-037",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-037",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, power and USB openings on the back and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-038",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-038",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, USB and HDMI openings on the right and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-039",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-039",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, USB and Ethernet openings on the front and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "ethernet",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-040",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-040",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, USB and HDMI openings on the left and three wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 3,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-041",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-041",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, power and HDMI openings on the right and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-042",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PI3-042",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a screwed lid, USB and Ethernet openings on the back and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PI3-043",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-043",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, Ethernet openings on the back and 1.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 1.5
+      }
+    },
+    {
+      "task_id": "BM-PI3-044",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-044",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, power openings on the left and 2 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.0
+      }
+    },
+    {
+      "task_id": "BM-PI3-045",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-045",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, Ethernet openings on the back and 2.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "ethernet",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.5
+      }
+    },
+    {
+      "task_id": "BM-PI3-046",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI3-046",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid, HDMI openings on the right and 3 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 3.0
+      }
+    },
+    {
+      "task_id": "BM-PI3-047",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "clarify_conflict_lid",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI3-047",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": true,
+        "reason": "conflicting lid instructions"
+      }
+    },
+    {
+      "task_id": "BM-PI3-048",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "clarify_missing_port",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI3-048",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a removable lid and USB-C openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": true,
+        "reason": "USB-C does not exist on this board"
+      }
+    },
+    {
+      "task_id": "BM-PI3-049",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "clarify_vague",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI3-049",
+        "request_text": "Make a nice case for my Raspberry Pi 3 Model B+, something sturdy that looks good on a shelf.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": true,
+        "reason": "no checkable requirements"
+      }
+    },
+    {
+      "task_id": "BM-PI3-050",
+      "board_id": "raspberry_pi_3b_plus",
+      "category": "clarify_unsupported_unit",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PI3-050",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 3 Model B+ with a snap-fit lid and 0.08 inch wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_3b_plus",
+        "needs_clarification": true,
+        "reason": "inch unit / unusual thickness; confirm in mm"
+      }
+    },
+    {
+      "task_id": "BM-PZ2-001",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-001",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-002",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-002",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-003",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-003",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-004",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-004",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-005",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-005",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-006",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-006",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-007",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-007",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-008",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-008",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and mini HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-009",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-009",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-010",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-010",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and SD card openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-011",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-011",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-012",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-012",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and mini HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-013",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-013",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-014",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-014",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and SD card openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-015",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-015",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid and USB, mini HDMI and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-016",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-016",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid and USB, power and mini HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-017",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-017",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and mini HDMI, SD card and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "sd_card",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-018",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-018",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and SD card, mini HDMI and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-019",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-019",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid and power, SD card and mini HDMI openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "sd_card",
+            "side": "front"
+          },
+          {
+            "port": "hdmi",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-020",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-020",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and power, mini HDMI and SD card openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "sd_card",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-021",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-021",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and power and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-022",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-022",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and mini HDMI, power and SD card openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "sd_card",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-023",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-023",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, mini HDMI openings on the left and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-024",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-024",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, mini HDMI openings on the back and SD card openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "sd_card",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-025",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-025",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, USB openings on the right and mini HDMI openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-026",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-026",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, SD card openings on the left and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-027",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-027",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, mini HDMI openings on the right and SD card openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          },
+          {
+            "port": "sd_card",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-028",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-028",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, USB openings on the front and power and mini HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-029",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-029",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, SD card openings on the right and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-030",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-030",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, power openings on the right and SD card and mini HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "sd_card",
+            "side": "left"
+          },
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-031",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-031",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-032",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-032",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-033",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-033",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid and SD card openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-034",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-034",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with no lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-035",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-035",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and mini HDMI openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-036",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-036",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid and mini HDMI openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-037",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-037",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, SD card and USB openings on the front and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-038",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-038",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, mini HDMI and USB openings on the front and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-039",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-039",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, SD card and mini HDMI openings on the right and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "right"
+          },
+          {
+            "port": "hdmi",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-040",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-040",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, USB and SD card openings on the back and three wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "sd_card",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 3,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-041",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-041",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, SD card and power openings on the left and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-042",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-PZ2-042",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a screwed lid, mini HDMI and USB openings on the back and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-PZ2-043",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-043",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, power openings on the front and 1.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 1.5
+      }
+    },
+    {
+      "task_id": "BM-PZ2-044",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-044",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, USB openings on the back and 2 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.0
+      }
+    },
+    {
+      "task_id": "BM-PZ2-045",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-045",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, SD card openings on the back and 2.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "sd_card",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.5
+      }
+    },
+    {
+      "task_id": "BM-PZ2-046",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PZ2-046",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid, mini HDMI openings on the left and 3 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "hdmi",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 3.0
+      }
+    },
+    {
+      "task_id": "BM-PZ2-047",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "clarify_conflict_lid",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PZ2-047",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": true,
+        "reason": "conflicting lid instructions"
+      }
+    },
+    {
+      "task_id": "BM-PZ2-048",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "clarify_missing_port",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PZ2-048",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a removable lid and Ethernet openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": true,
+        "reason": "Ethernet does not exist on this board"
+      }
+    },
+    {
+      "task_id": "BM-PZ2-049",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "clarify_vague",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PZ2-049",
+        "request_text": "Make a nice case for my Raspberry Pi Zero 2 W, something sturdy that looks good on a shelf.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": true,
+        "reason": "no checkable requirements"
+      }
+    },
+    {
+      "task_id": "BM-PZ2-050",
+      "board_id": "raspberry_pi_zero_2_w",
+      "category": "clarify_unsupported_unit",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-PZ2-050",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi Zero 2 W with a snap-fit lid and 0.08 inch wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_zero_2_w",
+        "needs_clarification": true,
+        "reason": "inch unit / unusual thickness; confirm in mm"
+      }
+    },
+    {
+      "task_id": "BM-UNO-001",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-001",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-002",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-002",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-003",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-003",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-004",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-004",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-005",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-005",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-006",
+      "board_id": "arduino_uno_r3",
+      "category": "basic",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-006",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-007",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-007",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-008",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-008",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-009",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-009",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-010",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-010",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-011",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-011",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-012",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-012",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-013",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-013",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-014",
+      "board_id": "arduino_uno_r3",
+      "category": "single_port",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-014",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-015",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-015",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-016",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-016",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and USB and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-017",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-017",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-018",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-018",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-019",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-019",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and USB and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-020",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-020",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and power and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          },
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-021",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-021",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and power and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-022",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_same_side",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-022",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and power and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-023",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-023",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the back and power openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-024",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-024",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid, power openings on the left and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "left"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-025",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-025",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the left and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-026",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-026",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the right and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-027",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-027",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the left and power openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-028",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-028",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, power openings on the front and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          },
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-029",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-029",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the front and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-030",
+      "board_id": "arduino_uno_r3",
+      "category": "multi_port_diff_sides",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-030",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid, USB openings on the front and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-031",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-031",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and USB openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-032",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-032",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and power openings on the right.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-033",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-033",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-034",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-034",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with no lid and power openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "none",
+        "ports": [
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-035",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-035",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and USB openings on the back.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "snap_fit",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-036",
+      "board_id": "arduino_uno_r3",
+      "category": "lid_variant",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-036",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid and USB openings on the left.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "left"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-037",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-037",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, power and USB openings on the right and one wall-mount hole.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 1,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-038",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-038",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB and power openings on the front and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "front"
+          },
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-039",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-039",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid, power and USB openings on the right and two wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 2,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-040",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-040",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB and power openings on the back and three wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          },
+          {
+            "port": "power",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 3,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-041",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-041",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, power and USB openings on the right and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-042",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_mount",
+      "difficulty": "medium",
+      "request": {
+        "task_id": "BM-UNO-042",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a screwed lid, power and USB openings on the right and four wall-mount holes.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "screwed",
+        "ports": [
+          {
+            "port": "power",
+            "side": "right"
+          },
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 4,
+        "wall_thickness_mm": null
+      }
+    },
+    {
+      "task_id": "BM-UNO-043",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-043",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the right and 1.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 1.5
+      }
+    },
+    {
+      "task_id": "BM-UNO-044",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-044",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the back and 2 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "back"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.0
+      }
+    },
+    {
+      "task_id": "BM-UNO-045",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-045",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, USB openings on the right and 2.5 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "usb",
+            "side": "right"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.5
+      }
+    },
+    {
+      "task_id": "BM-UNO-046",
+      "board_id": "arduino_uno_r3",
+      "category": "wall_thickness",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-UNO-046",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid, power openings on the front and 3 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": false,
+        "lid": "removable",
+        "ports": [
+          {
+            "port": "power",
+            "side": "front"
+          }
+        ],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 3.0
+      }
+    },
+    {
+      "task_id": "BM-UNO-047",
+      "board_id": "arduino_uno_r3",
+      "category": "clarify_conflict_lid",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-UNO-047",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and no lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": true,
+        "reason": "conflicting lid instructions"
+      }
+    },
+    {
+      "task_id": "BM-UNO-048",
+      "board_id": "arduino_uno_r3",
+      "category": "clarify_missing_port",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-UNO-048",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a removable lid and Ethernet openings on the front.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": true,
+        "reason": "Ethernet does not exist on this board"
+      }
+    },
+    {
+      "task_id": "BM-UNO-049",
+      "board_id": "arduino_uno_r3",
+      "category": "clarify_vague",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-UNO-049",
+        "request_text": "Make a nice case for my Arduino Uno R3, something sturdy that looks good on a shelf.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": true,
+        "reason": "no checkable requirements"
+      }
+    },
+    {
+      "task_id": "BM-UNO-050",
+      "board_id": "arduino_uno_r3",
+      "category": "clarify_unsupported_unit",
+      "difficulty": "hard",
+      "request": {
+        "task_id": "BM-UNO-050",
+        "request_text": "Design a rectangular enclosure for Arduino Uno R3 with a snap-fit lid and 0.08 inch wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "arduino_uno_r3",
+        "needs_clarification": true,
+        "reason": "inch unit / unusual thickness; confirm in mm"
+      }
+    }
+  ]
+}
