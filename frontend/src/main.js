@@ -97,7 +97,7 @@ function sampleCase(w, l, h, t) {
   slab(t, wallH, l - 2 * t, -(w - t) / 2, midY, 0);
   return g;
 }
-function loadSTL(url) { // the backend will provide model_url later; a sample file is used for now
+function loadSTL(url) { // loads the real model from the backend (model_url)
   new STLLoader().load(url, (geo) => {
     geo.rotateX(-Math.PI / 2); // CAD is Z-up, three.js is Y-up
     geo.computeBoundingBox();
@@ -109,8 +109,6 @@ function loadSTL(url) { // the backend will provide model_url later; a sample fi
 $('download').textContent = 'Download STEP';
 const stlBtn = add($('download').parentElement, 'button', 'Download STL', 'chip');
 stlBtn.disabled = true;
-const sampleBtn = add($('download').parentElement, 'button', 'Load sample STL', 'chip');
-sampleBtn.onclick = () => { $('dims').textContent = 'sample_case.stl (real output of the geometry module)'; loadSTL('/sample_case.stl'); };
 
 // ---------- backend ----------
 if (!USE_MOCK) { // show whether the real backend is reachable

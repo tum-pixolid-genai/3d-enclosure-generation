@@ -20,7 +20,6 @@ npm run dev
 - `src/main.js`: page logic, 3D viewer (three.js), backend call
 - `src/mock.js`: mock responses
 - `src/style.css`: styles
-- `public/sample_case.stl`: a real STL exported from the geometry module (`test_board`), used by the "Load sample STL" button
 - `vite.config.js`: dev proxy to the backend
 
 ## What the page uses from the backend
