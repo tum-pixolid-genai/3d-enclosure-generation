@@ -48,6 +48,7 @@ setSteps(0);
 // ---------- 3D viewer ----------
 const host = $('viewer');
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf4f5f2);
 const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 3000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -105,6 +106,9 @@ function loadSTL(url) { // the backend will provide model_url later; a sample fi
     setModel(new THREE.Mesh(geo, material));
   }, undefined, (e) => list('Could not load the model', [String((e && e.message) || e)]));
 }
+$('download').textContent = 'Download STEP';
+const stlBtn = add($('download').parentElement, 'button', 'Download STL', 'chip');
+stlBtn.disabled = true;
 const sampleBtn = add($('download').parentElement, 'button', 'Load sample STL', 'chip');
 sampleBtn.onclick = () => { $('dims').textContent = 'sample_case.stl (real output of the geometry module)'; loadSTL('/sample_case.stl'); };
 
@@ -160,14 +164,16 @@ function show(data) {
   const d = g && g.dimensions;
   if (d && g.valid) {
     const wall = data.design_spec.wall_thickness_mm || 2;
-    setModel(sampleCase(d.outer_width_mm, d.outer_length_mm, d.outer_height_mm, wall));
+    if (data.model_url) loadSTL(API + data.model_url); // the real model from the backend
+    else setModel(sampleCase(d.outer_width_mm, d.outer_length_mm, d.outer_height_mm, wall)); // stand-in (mock mode)
     $('dims').textContent = `${d.outer_width_mm} x ${d.outer_length_mm} x ${d.outer_height_mm} mm`;
   } else { setModel(null); $('dims').textContent = ''; }
-  if (data.model_url) loadSTL(data.model_url);
 
   const ok = g && g.valid && !USE_MOCK;
   $('download').disabled = !ok;
   $('download').title = USE_MOCK ? 'Available once the backend is connected' : '';
+  stlBtn.disabled = USE_MOCK || !data.model_url;
+  stlBtn.onclick = () => { location.href = API + data.model_url; };
   $('download').onclick = () => { location.href = `${API}/design/${data.task_id}/download`; };
 }
 
