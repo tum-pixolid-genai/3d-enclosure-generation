@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import re
+import cadquery as cq
 
 from geometry.checks import validate_and_generate
 
@@ -33,5 +34,31 @@ def run_geometry(design_spec: dict) -> dict:
         output_path=output_path
     )
 
-    # Step 5: Return the Geometry result
+    
+    # Step 5: Convert STEP to STL for frontend preview
+    if result.get("valid") and output_path.is_file():
+        stl_path = OUTPUT_DIR / f"{task_id}.stl"
+
+        try:
+            model = cq.importers.importStep(str(output_path))
+
+            cq.exporters.export(
+                model,
+                str(stl_path),
+                exportType="STL"
+            )
+
+            if not stl_path.is_file() or stl_path.stat().st_size == 0:
+                raise RuntimeError("STL file is missing or empty")
+
+            result["stl_path"] = str(stl_path)
+
+        except Exception as error:
+            stl_path.unlink(missing_ok=True)
+            result.setdefault("warnings", []).append(
+                f"STL export failed: {error}"
+            )
+
+    # Step 6: Return the Geometry result
     return result
+

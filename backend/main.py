@@ -72,7 +72,16 @@ def create_design(request: DesignRequest):
             "geometry_result": geometry_result
         }
 
+    
     # Step 8: Return the generated model information
+    stl_path = geometry_result.get("stl_path")
+
+    model_url = (
+        f"/design/{task_id}/model.stl"
+        if stl_path and Path(stl_path).is_file()
+        else None
+    )
+
     return {
         "status": (
             "generated_with_warnings"
@@ -81,8 +90,10 @@ def create_design(request: DesignRequest):
         ),
         "task_id": task_id,
         "design_spec": design_spec,
-        "geometry_result": geometry_result
+        "geometry_result": geometry_result,
+        "model_url": model_url
     }
+
 
 
 @app.get("/design/{task_id}/download")
@@ -108,4 +119,30 @@ def download_design(task_id: str):
         path=file_path,
         filename=file_path.name,
         media_type="model/step"
+    )
+
+
+@app.get("/design/{task_id}/model.stl")
+def get_design_stl(task_id: str):
+
+    # Validate task ID
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", task_id):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid task ID"
+        )
+
+    # Find STL file
+    file_path = OUTPUT_DIR / f"{task_id}.stl"
+
+    if not file_path.is_file():
+        raise HTTPException(
+            status_code=404,
+            detail="STL file not found"
+        )
+
+    # Return STL file to frontend
+    return FileResponse(
+        path=file_path,
+        media_type="model/stl"
     )
