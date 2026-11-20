@@ -1,0 +1,118 @@
+{
+  "provenance": "Original synthetic engineering diagrams and proposed reference answers prepared for Qianshun Gu with Codex assistance. No external photos or personal data.",
+  "review_status": "Author-proposed labels. Independent teammate review is pending.",
+  "data_license": "CC BY 4.0 for eligible contributed diagrams and reference annotations to the extent the contributor holds relevant rights.",
+  "cases": [
+    {
+      "id": "IMG-01",
+      "image": "open.png",
+      "instructions": "",
+      "reference": {
+        "board_id": null,
+        "case_shape": "rectangular",
+        "lid": {
+          "present": false,
+          "style": "unspecified"
+        },
+        "port_requirements": [],
+        "mounting": {
+          "wall_mount_hole_count": null
+        },
+        "wall_thickness_mm": null
+      },
+      "expected": "needs_clarification",
+      "note": "Rectangular open enclosure. No image evidence identifies a board or a wall dimension.",
+      "image_sha256": "d377f7ab247a9dd1239685837e1484fb290be026e7ec367ef1fd073dfb3e75da"
+    },
+    {
+      "id": "IMG-02",
+      "image": "lid.png",
+      "instructions": "",
+      "reference": {
+        "board_id": null,
+        "case_shape": "rectangular",
+        "lid": {
+          "present": true,
+          "style": "unspecified"
+        },
+        "port_requirements": [],
+        "mounting": {
+          "wall_mount_hole_count": null
+        },
+        "wall_thickness_mm": null
+      },
+      "expected": "needs_clarification",
+      "note": "Separate cover above enclosure, attachment unverified.",
+      "image_sha256": "a6483ea662a7cd39810ca1132754d85d1b206f10083295b8367dce79cb8198db"
+    },
+    {
+      "id": "IMG-03",
+      "image": "ports.png",
+      "instructions": "",
+      "reference": {
+        "board_id": null,
+        "case_shape": "rectangular",
+        "lid": {
+          "present": false,
+          "style": "unspecified"
+        },
+        "port_requirements": [
+          {
+            "port_type": "unknown",
+            "requested_side": "unspecified",
+            "count": 2
+          }
+        ],
+        "mounting": {
+          "wall_mount_hole_count": null
+        },
+        "wall_thickness_mm": null
+      },
+      "expected": "needs_clarification",
+      "note": "Two generic rectangular side cutouts. Connector types and physical axes are absent.",
+      "image_sha256": "9d46cf2abe26085996ca6daf2b1e089f08d6fceba905b598c20fe18e0d079ca4"
+    },
+    {
+      "id": "IMG-04",
+      "image": "ambiguous.jpg",
+      "instructions": "",
+      "reference": {
+        "board_id": null,
+        "case_shape": "unspecified",
+        "lid": {
+          "present": null,
+          "style": "unspecified"
+        },
+        "port_requirements": [],
+        "mounting": {
+          "wall_mount_hole_count": null
+        },
+        "wall_thickness_mm": null
+      },
+      "expected": "needs_clarification",
+      "note": "A rounded outline and one line do not establish enclosure geometry or a lid.",
+      "image_sha256": "125f776b47cdbafe7000b70de434e781d81ee548d631f020b0ccee9a734e68bc"
+    },
+    {
+      "id": "IMG-05",
+      "image": "open.png",
+      "instructions": "Make a rectangular case for Raspberry Pi 4 with no lid; 2 mm wall thickness.",
+      "reference": {
+        "board_id": "raspberry_pi_4",
+        "case_shape": "rectangular",
+        "lid": {
+          "present": false,
+          "style": "unspecified"
+        },
+        "port_requirements": [],
+        "mounting": {
+          "wall_mount_hole_count": null
+        },
+        "wall_thickness_mm": 2
+      },
+      "expected": "review_required",
+      "note": "Image supplies the open shape, accompanying text supplies board and wall thickness. Manual visual review precedes optional CAD.",
+      "image_sha256": "d377f7ab247a9dd1239685837e1484fb290be026e7ec367ef1fd073dfb3e75da"
+    }
+  ]
+}
