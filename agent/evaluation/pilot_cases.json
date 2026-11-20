@@ -1,0 +1,137 @@
+{
+  "schema_version": "0.1",
+  "reference_notes": "Human-reviewable reference values. Clarification topics are approximate lexical checks, never a claim of exact question quality. Capability is the expected policy status with the original request.",
+  "split": "smoke",
+  "provenance": "Local IT-01 through IT-04 integration requests. IT-04 is previously seen as T004.",
+  "cases": [
+    {
+      "id": "IT-01",
+      "category": "supported",
+      "request": {
+        "task_id": "IT-01",
+        "request_text": "Make a rectangular case for Raspberry Pi 4 with no lid; 2 mm wall thickness.",
+        "language": "en"
+      },
+      "reference": {
+        "requirements": {
+          "board_id": "raspberry_pi_4",
+          "case_shape": "rectangular",
+          "lid": {
+            "present": false,
+            "style": "unspecified"
+          },
+          "port_requirements": [],
+          "mounting": {
+            "wall_mount_hole_count": null
+          },
+          "wall_thickness_mm": 2
+        },
+        "needs_clarification": false,
+        "clarification_topics": [],
+        "capability": "allow"
+      }
+    },
+    {
+      "id": "IT-02",
+      "category": "unknown_board",
+      "request": {
+        "task_id": "IT-02",
+        "request_text": "Make a rectangular case for an unknown board with no lid; 2 mm wall thickness.",
+        "language": "en"
+      },
+      "reference": {
+        "requirements": {
+          "board_id": null,
+          "case_shape": "rectangular",
+          "lid": {
+            "present": false,
+            "style": "unspecified"
+          },
+          "port_requirements": [],
+          "mounting": {
+            "wall_mount_hole_count": null
+          },
+          "wall_thickness_mm": 2
+        },
+        "needs_clarification": true,
+        "clarification_topics": [
+          "board"
+        ],
+        "capability": "clarification_required"
+      }
+    },
+    {
+      "id": "IT-03",
+      "category": "geometry_boundary",
+      "request": {
+        "task_id": "IT-03",
+        "request_text": "Make a rectangular case for Raspberry Pi 4 with no lid; 0.5 mm wall thickness.",
+        "language": "en"
+      },
+      "reference": {
+        "requirements": {
+          "board_id": "raspberry_pi_4",
+          "case_shape": "rectangular",
+          "lid": {
+            "present": false,
+            "style": "unspecified"
+          },
+          "port_requirements": [],
+          "mounting": {
+            "wall_mount_hole_count": null
+          },
+          "wall_thickness_mm": 0.5
+        },
+        "needs_clarification": false,
+        "clarification_topics": [],
+        "capability": "allow",
+        "note": "The gate allows the original 0.5 mm value to proceed to Geometry, which owns the wall thickness constraint. This pilot does not call Geometry."
+      }
+    },
+    {
+      "id": "IT-04",
+      "category": "complex",
+      "request": {
+        "task_id": "IT-04",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a removable lid, USB and Ethernet openings on the front, and two wall-mount holes.",
+        "language": "en"
+      },
+      "reference": {
+        "requirements": {
+          "board_id": "raspberry_pi_4",
+          "case_shape": "rectangular",
+          "lid": {
+            "present": true,
+            "style": "removable"
+          },
+          "port_requirements": [
+            {
+              "port_type": "usb",
+              "requested_side": "front",
+              "count": null
+            },
+            {
+              "port_type": "ethernet",
+              "requested_side": "front",
+              "count": null
+            }
+          ],
+          "mounting": {
+            "wall_mount_hole_count": 2
+          },
+          "wall_thickness_mm": null
+        },
+        "needs_clarification": false,
+        "clarification_topics": [],
+        "capability": "unsupported",
+        "unsupported": [
+          "removable lid",
+          "front USB opening",
+          "front Ethernet opening",
+          "two external wall-mount holes"
+        ]
+      },
+      "source": "Historical T004 adapted from TUM GenAI Project Catalog, Project 02, p. 6. The request text is preserved in agent/examples/complex_request_T004.json."
+    }
+  ]
+}
