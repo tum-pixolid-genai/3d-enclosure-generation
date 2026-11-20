@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- OPTIONAL LOCAL DEMO / TEST HARNESS; not the team's official Frontend or Backend. -->
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixolid · Image-to-Design Review</title>
+<style>
+body{font:16px system-ui,sans-serif;background:#f4f6f5;color:#173330;margin:0}
+main{max-width:1050px;margin:35px auto;padding:24px}
+h1{font-size:28px}section{background:white;border:1px solid #d6dfdc;border-radius:10px;padding:24px;margin:18px 0}
+label{display:block;margin:12px 0 7px}input,textarea,button{font:inherit}
+textarea{box-sizing:border-box;width:100%;min-height:80px;padding:10px}
+button{border:0;border-radius:5px;padding:12px 18px;background:#17685e;color:white;margin-top:14px;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}img{max-width:100%;max-height:320px;display:block;margin:16px 0}
+pre{overflow:auto;max-height:520px;background:#f1f5f4;padding:16px;font-size:13px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:750px){.row{grid-template-columns:1fr}}
+#status{font-weight:600;white-space:pre-line}a{color:#17685e;margin-right:20px}
+</style>
+<main>
+<h1>Image-to-Design · 本地复核演示</h1>
+<p>上传草图，查看需求和证据。复核图片、JSON 与限制后，才能请求生成 CAD。</p>
+<section>
+<label for="image">PNG 或 JPEG，16–2048 像素，最大 10 MiB</label>
+<input id="image" type="file" accept="image/png,image/jpeg">
+<img id="preview" alt="待复核的图片" hidden>
+<label for="instructions">附加文字要求</label>
+<textarea id="instructions" placeholder="例如 Raspberry Pi 4、明确壁厚、盖子和端口要求"></textarea>
+<button id="extract">提取 Design Spec</button>
+<p id="status" role="status">请选择图片。</p>
+</section>
+<section id="results" hidden>
+<div class="row">
+<div><h2>Design Spec v0.1</h2><pre id="spec"></pre></div>
+<div><h2>复核状态与能力限制</h2><pre id="gate"></pre></div>
+</div>
+<details><summary>原始模型、独立观察与修正记录</summary><pre id="raw"></pre></details>
+<label for="reviewer">复核人姓名</label><input id="reviewer" type="text">
+<label><input id="reviewed" type="checkbox"> 我已检查这张图片、JSON 和能力限制，并批准仅对此结果生成 CAD。</label>
+<button id="approve" disabled>批准并生成 STEP/STL</button>
+<p id="downloads"></p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let current=null;
+function reset(){current=null;$('reviewed').checked=false;$('approve').disabled=true;$('results').hidden=true;$('downloads').replaceChildren();$('status').textContent='输入已更改，请重新提取并复核。';}
+$('image').onchange=()=>{reset();const file=$('image').files[0];if(file){$('preview').src=URL.createObjectURL(file);$('preview').hidden=false;}};
+$('instructions').oninput=reset;
+function refreshApproval(){$('approve').disabled=!current||!$('reviewed').checked||!$('reviewer').value.trim();}
+$('reviewed').onchange=refreshApproval;$('reviewer').oninput=refreshApproval;
+$('extract').onclick=async()=>{
+ const file=$('image').files[0];if(!file){$('status').textContent='请先选择图片。';return;}
+ reset();$('extract').disabled=true;$('image').disabled=true;$('instructions').disabled=true;$('status').textContent='本地视觉模型正在提取并核对图片…';
+ try{
+  const data=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.onerror=reject;reader.readAsDataURL(file);});
+  const response=await fetch('/image',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({filename:file.name,image_base64:data,instructions:$('instructions').value})});
+  const body=await response.json();if(!response.ok)throw new Error(JSON.stringify(body));
+  current=body;$('results').hidden=false;
+  $('spec').textContent=JSON.stringify(body.result.design_spec,null,2);
+  $('gate').textContent=JSON.stringify(body.result.capability,null,2);
+  $('raw').textContent=JSON.stringify(body.result,null,2);
+  $('status').textContent='提取完成。状态 '+body.result.capability.status+'。CAD 需要明确复核。';
+ }catch(error){$('status').textContent=String(error);}finally{$('extract').disabled=false;$('image').disabled=false;$('instructions').disabled=false;}
+};
+$('approve').onclick=async()=>{
+ if(!current||!$('reviewed').checked)return;
+ const reviewedResult=current;
+ $('approve').disabled=true;
+ for(const id of ['image','instructions','extract','reviewer','reviewed'])$(id).disabled=true;
+ try{
+  const response=await fetch('/image/'+reviewedResult.task_id+'/approve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({approved:true,reviewer:$('reviewer').value,source_result_sha256:reviewedResult.source_result_sha256})});
+  const body=await response.json();if(!response.ok)throw new Error(JSON.stringify(body));
+  if(current!==reviewedResult)return;
+  $('status').textContent='已按复核结果生成 CAD。实际装配与打印仍待验证。';
+  for(const [text,url] of [['下载 STEP',body.step_url],['下载 STL',body.stl_url]]){const a=document.createElement('a');a.textContent=text;a.href=url;$('downloads').appendChild(a);}
+ }catch(error){if(current===reviewedResult)$('status').textContent=String(error);}
+ finally{for(const id of ['image','instructions','extract','reviewer','reviewed'])$(id).disabled=false;}
+};
+</script>
+</html>
