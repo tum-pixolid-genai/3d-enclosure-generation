@@ -26,7 +26,7 @@ BOARD_DATA = {
         "usb_ethernet_centres_mm": [9.0, 27.0, 45.75],
 
         # Preliminary board height reference
-        "height_mm": 16.0,
+        "height_mm": 17.6,
 
         # Enclosure mounting design
         "standoff_height_mm": 3.0,
