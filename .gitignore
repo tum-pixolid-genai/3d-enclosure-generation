@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+.venv/
+venv/
+env/
+.conda/
+
+.DS_Store
+
+*.step
+*.stp
+*.stl
+
+.vscode/
+.idea/
