@@ -10,8 +10,9 @@ const $ = (id) => document.getElementById(id);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const EXAMPLES = [
-  ['Full request', 'Make a rectangular case for Raspberry Pi 4 with a removable lid, USB and Ethernet openings on the front, and two wall-mount holes.'],
-  ['Simple', 'Make a case for Raspberry Pi 4.'],
+  ['No lid (works)', 'Design a rectangular enclosure for Raspberry Pi 4 with no lid.'],
+  ['With lid and ports (not supported yet)', 'Make a rectangular case for Raspberry Pi 4 with a removable lid, USB and Ethernet openings on the front, and two wall-mount holes.'],
+  ['Needs a review', 'Make a rectangular case for Raspberry Pi 4.'],
   ['Too vague', 'Generate a case for Raspberry Pi 4.'],
 ];
 const STEPS = ['Request', 'Design spec', 'Geometry and checks', 'Result'];
@@ -43,7 +44,9 @@ EXAMPLES.forEach(([name, text]) => {
   const b = add($('chips'), 'button', name, 'chip');
   b.onclick = () => { $('prompt').value = text; };
 });
+$('prompt').value = EXAMPLES[0][1];
 setSteps(0);
+if (USE_MOCK) add(document.querySelector('header'), 'p', 'Mock mode: the results are fake. Open /?real to use the real backend.').style.color = 'var(--bad)';
 
 // ---------- 3D viewer ----------
 const host = $('viewer');
@@ -120,11 +123,33 @@ if (!USE_MOCK) { // show whether the real backend is reachable
 }
 async function fetchDesign(prompt) {
   if (USE_MOCK) { await sleep(1800); return structuredClone(MOCKS[$('scenario').value]); }
-  const r = await fetch(`${API}/design`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }),
-  });
-  if (!r.ok) throw new Error(`The backend answered with status ${r.status}. Check that the request has at least 10 characters.`);
-  return r.json();
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 150000);
+  try {
+    const r = await fetch(`${API}/design`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }), signal: ctrl.signal,
+    });
+    if (!r.ok) {
+    let msg = `The backend answered with status ${r.status}.`;
+    try {
+      const d = (await r.json()).detail;
+      if (Array.isArray(d)) msg = 'Please enter a longer request (at least 10 characters).';
+      else if (d && d.message) msg = d.message;
+      else if (typeof d === 'string') msg = d;
+    } catch (e) { /* keep the generic message */ }
+    throw new Error(msg);
+  }
+    return await r.json();
+  } catch (e) {
+    if (e.name === 'AbortError') throw new Error('The backend did not answer within 150 seconds. Is it still running?');
+    throw e;
+  } finally { clearTimeout(timer); }
+}
+
+function saveFile(url, name) {
+  const a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
 }
 
 // ---------- show a result ----------
@@ -142,18 +167,34 @@ function showSpec(s) {
   ].forEach(([k, v]) => { add($('spec'), 'dt', k); add($('spec'), 'dd', String(v)); });
   $('raw').textContent = JSON.stringify(s, null, 2);
 }
+function describeIssue(i) {
+  const names = {
+    unsupported_board: () => `Board not supported: ${i.board_id}`,
+    unsupported_shape: () => `Shape not supported: ${i.shape}`,
+    lid: () => `Lid (${i.style})`,
+    port_opening: () => `${i.port_type} opening (${i.requested_side})`,
+    external_wall_mount_holes: () => `${i.count} wall-mount hole(s)`,
+  };
+  return (names[i.code] || (() => i.code))();
+}
 function show(data) {
   const g = data.geometry_result;
-  const questions = data.questions || [];
+  const cap = data.capability || null;
+  const questions = data.questions || (cap && cap.questions) || [];
   setSteps(4);
   $('verdicts').replaceChildren();
   $('messages').replaceChildren();
   verdict('AI says the case works', 'not reported yet', 'na'); // filled in once Retry exists
-  if (!g) verdict('Automatic checks', 'not run', 'na');
+  if (!g) {
+    const why = { unsupported: 'not run: request not supported yet', review_required: 'not run: needs a review' }[data.status];
+    verdict('Automatic checks', why || 'not run', why ? 'warn' : 'na');
+  }
   else if (g.valid) verdict('Automatic checks', g.warnings.length ? 'passed, with warnings' : 'passed', g.warnings.length ? 'warn' : 'ok');
   else verdict('Automatic checks', 'failed', 'bad');
   verdict('Printed and tested', 'not tested', 'na');
   list('Questions from the AI', questions);
+  list('Not supported yet', cap && (cap.unsupported || []).map(describeIssue));
+  list('Why a review is needed', data.status === 'needs_clarification' ? [] : cap && cap.review_reasons);
   list('Errors', g && g.errors);
   list('Warnings', g && g.warnings);
   list('Assumptions', data.design_spec && data.design_spec.assumptions);
@@ -171,23 +212,28 @@ function show(data) {
   $('download').disabled = !ok;
   $('download').title = USE_MOCK ? 'Available once the backend is connected' : '';
   stlBtn.disabled = USE_MOCK || !data.model_url;
-  stlBtn.onclick = () => { location.href = API + data.model_url; };
-  $('download').onclick = () => { location.href = `${API}/design/${data.task_id}/download`; };
+  stlBtn.onclick = () => saveFile(API + data.model_url, `${data.task_id}.stl`);
+  $('download').onclick = () => saveFile(`${API}/design/${data.task_id}/download`, `${data.task_id}.step`);
 }
 
 $('go').onclick = async () => {
   $('go').disabled = true;
   $('verdicts').replaceChildren();
   $('messages').replaceChildren();
+  setModel(null); $('dims').textContent = '';
+  $('download').disabled = true; stlBtn.disabled = true;
   setSteps(1);
+  const hint = setTimeout(() => list('Still working', ['A request to the real language model can take up to a minute or two.']), 8000);
   const timer = setTimeout(() => setSteps(2), 900);
   try {
     show(await fetchDesign($('prompt').value));
   } catch (e) {
     setSteps(0);
+    $('messages').replaceChildren();
     list('Something went wrong', [e.message || String(e)]);
   } finally {
     clearTimeout(timer);
+    clearTimeout(hint);
     $('go').disabled = false;
   }
 };
