@@ -28,7 +28,7 @@ and Automatic Checks module.
 | GET | /design/{task_id}/download | Download a generated STEP file |
 | GET | /design/{task_id}/model.stl | Download the STL preview |
 | POST | /design/pi4-assembly | Generate and verify the Raspberry Pi 4 reference assembly |
-| GET | /design/pi4-assembly/{task_id}/{artifact} | Download the verified `enclosure`, `lid`, or `report` |
+| GET | /design/pi4-assembly/{task_id}/{artifact} | Download an assembly STEP, STL, or verification report |
 
 ## Installation
 
@@ -95,11 +95,14 @@ In Swagger, call `POST /design/pi4-assembly` with no request body. This route
 uses the reference STEP to generate automatic port cutouts with 0.5 mm
 clearance and a screw-fastened lid. It runs without Ollama.
 
-The response includes `task_id`, `status`, `assembly_validated`, and
-`verification_summary`. When the status is `generated`, the `downloads`
-object contains three relative URLs for the enclosure STEP, lid STEP, and
-JSON verification report. Use those URLs through the same Backend base URL
-or frontend proxy that handled the request.
+The response includes `task_id`, `status`, `assembly_validated`,
+`verification_summary` and `verification_metrics`. The metrics include the
+collision volumes in mm³, PCB hole alignment and maximum deviation in mm,
+and lid fastener alignment and count. When the status is `generated`, the
+`downloads` object contains relative URLs for both STEP files (`enclosure`,
+`lid`), both STL previews (`enclosure_stl`, `lid_stl`), and the JSON
+verification `report`. Use those URLs through the same Backend base URL or
+frontend proxy that handled the request.
 
 A failed geometry check returns `geometry_blocked` with the verification
 summary. A missing reference STEP returns HTTP 503. The verification covers

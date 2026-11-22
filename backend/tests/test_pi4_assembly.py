@@ -25,10 +25,13 @@ def test_incomplete_assembly_is_not_published(monkeypatch, tmp_path, validated):
     def incomplete_generation(step_path, export_dir):
         assert step_path == reference
         export_dir.mkdir()
-        (export_dir / "enclosure_candidate_cutouts.step").write_bytes(b"enclosure")
         return {
             "assembly_validated": validated,
             "verification_summary": {"assembly_validated": validated},
+            "baseline_collision_mm3": 1.0,
+            "candidate_collision": {"collision_volume_mm3": 1.0},
+            "mounting_alignment": {"step_hole_alignment_verified": False},
+            "lid_fastener_validation": {"valid": False, "hole_count": 4},
         }
 
     monkeypatch.setattr(assembly, "run_port_cutout_experiment", incomplete_generation)
@@ -41,6 +44,8 @@ def test_incomplete_assembly_is_not_published(monkeypatch, tmp_path, validated):
         response = assembly.create_pi4_assembly()
         assert response["status"] == "geometry_blocked"
         assert response["assembly_validated"] is False
+        assert response["verification_metrics"]["collision_volume_mm3"] == 1.0
+        assert response["verification_metrics"]["mounting_hole_max_deviation_mm"] is None
         assert "downloads" not in response
 
     assert list((tmp_path / "pi4_assemblies").iterdir()) == []
