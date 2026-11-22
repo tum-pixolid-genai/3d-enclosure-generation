@@ -13,7 +13,7 @@ OUTPUT_DIR = (
 )
 
 
-def run_geometry(design_spec: dict) -> dict:
+def run_geometry(design_spec: dict, *, output_dir: Path | None = None) -> dict:
     # Step 1: Get and validate the task ID
     task_id = design_spec["task_id"]
 
@@ -23,10 +23,11 @@ def run_geometry(design_spec: dict) -> dict:
         raise ValueError("Invalid task_id")
 
     # Step 2: Create output directory
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_dir = OUTPUT_DIR if output_dir is None else output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Step 3: Define STEP file path
-    output_path = OUTPUT_DIR / f"{task_id}.step"
+    output_path = output_dir / f"{task_id}.step"
 
     # Step 4: Call the Geometry module
     result = validate_and_generate(
@@ -37,7 +38,7 @@ def run_geometry(design_spec: dict) -> dict:
     
     # Step 5: Convert STEP to STL for frontend preview
     if result.get("valid") and output_path.is_file():
-        stl_path = OUTPUT_DIR / f"{task_id}.stl"
+        stl_path = output_dir / f"{task_id}.stl"
 
         try:
             model = cq.importers.importStep(str(output_path))

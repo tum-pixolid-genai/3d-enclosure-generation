@@ -1,7 +1,9 @@
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field, ConfigDict
+from os import getenv
 import uuid
+from agent.llm_agent import AgentError
 from backend.agent_service import run_agent
 from pathlib import Path
 from backend.geometry_service import run_geometry, OUTPUT_DIR
@@ -11,12 +13,17 @@ from fastapi.responses import FileResponse
 
 app = FastAPI()
 
+if getenv("PIXOLID_IMAGE_AGENT_PORT"):
+    from backend.image_routes import router as image_router
+
+    app.include_router(image_router)
+
 
 # Define the structure of a design request
 class DesignRequest(BaseModel):
     model_config = ConfigDict(str_strip_whitespace=True)
 
-    prompt: str = Field(min_length=10)
+    prompt: str = Field(min_length=10, max_length=4096)
 
 
 # Health check API
@@ -38,17 +45,36 @@ def create_design(request: DesignRequest):
         "language": "en"
     }
 
-    # Step 3: Call the Agent
-    design_spec = run_agent(agent_request)
+    # Step 3: Extract the spec and check the Agent's capability decision
+    try:
+        design_spec, capability = run_agent(agent_request)
+    except AgentError as error:
+        if error.code in {"invalid_request", "unsupported_language"}:
+            status_code = 422
+            message = str(error)
+        elif error.code in {"ollama_http_error", "ollama_connection_error", "ollama_timeout"}:
+            status_code = 503
+            message = "The text model service is unavailable or did not respond in time."
+        else:
+            status_code = 502
+            message = "The text model did not produce a valid design."
+        raise HTTPException(
+            status_code=status_code,
+            detail={"code": error.code, "message": message},
+        ) from error
 
-    # Step 4: Check whether clarification is needed
-    if design_spec["needs_clarification"]:
-        return {
-            "status": "needs_clarification",
+    # Step 4: Stop before Geometry when the Agent has not approved generation
+    if capability["allow_geometry"] is not True:
+        status = capability["status"]
+        response = {
+            "status": "needs_clarification" if status == "clarification_required" else status,
             "task_id": task_id,
             "design_spec": design_spec,
-            "questions": design_spec["clarification_questions"]
+            "capability": capability,
         }
+        if status == "clarification_required":
+            response["questions"] = capability["questions"]
+        return response
 
     # Step 5: Call Geometry
     geometry_result = run_geometry(design_spec)
