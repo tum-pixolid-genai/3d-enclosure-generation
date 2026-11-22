@@ -7,11 +7,13 @@ from agent.llm_agent import AgentError
 from backend.agent_service import run_agent
 from pathlib import Path
 from backend.geometry_service import run_geometry, OUTPUT_DIR
+from backend.pi4_assembly_routes import router as pi4_assembly_router
 import re
 
 from fastapi.responses import FileResponse
 
 app = FastAPI()
+app.include_router(pi4_assembly_router)
 
 if getenv("PIXOLID_IMAGE_AGENT_PORT"):
     from backend.image_routes import router as image_router

@@ -27,6 +27,8 @@ and Automatic Checks module.
 | POST | /design | Process a design request |
 | GET | /design/{task_id}/download | Download a generated STEP file |
 | GET | /design/{task_id}/model.stl | Download the STL preview |
+| POST | /design/pi4-assembly | Generate and verify the Raspberry Pi 4 reference assembly |
+| GET | /design/pi4-assembly/{task_id}/{artifact} | Download the verified `enclosure`, `lid`, or `report` |
 
 ## Installation
 
@@ -82,6 +84,27 @@ A clarification, unsupported feature, or review requirement returns a
 business status and the capability decision with no CAD links. A local
 model transport error returns HTTP 503 and invalid model output returns
 HTTP 502.
+
+## Raspberry Pi 4 assembly
+
+Download the [Raspberry Pi 4 Model B layout STEP](https://www.innerscene.com/tools/library/3d-parts/raspberry-pi-4-model-b-layout-821bd96d).
+Save it as `../pixolid-demo-outputs/reference-models/raspberry-pi-4.step`,
+or set `PIXOLID_PI4_REFERENCE_STEP` to the absolute path of the downloaded file.
+
+In Swagger, call `POST /design/pi4-assembly` with no request body. This route
+uses the reference STEP to generate automatic port cutouts with 0.5 mm
+clearance and a screw-fastened lid. It runs without Ollama.
+
+The response includes `task_id`, `status`, `assembly_validated`, and
+`verification_summary`. When the status is `generated`, the `downloads`
+object contains three relative URLs for the enclosure STEP, lid STEP, and
+JSON verification report. Use those URLs through the same Backend base URL
+or frontend proxy that handled the request.
+
+A failed geometry check returns `geometry_blocked` with the verification
+summary. A missing reference STEP returns HTTP 503. The verification covers
+CAD geometry and collisions. Physical fastener fit, connector access, and
+printing tolerances require separate testing.
 
 ## Regression tests
 
