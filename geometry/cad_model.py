@@ -7,6 +7,7 @@ def create_enclosure(
     wall_thickness_mm=2.0,
     usb_port=None,
     mounting=None,
+    lid_fasteners=None,
 ):
     outer_width = dimensions["outer_width_mm"]
     outer_length = dimensions["outer_length_mm"]
@@ -127,7 +128,83 @@ def create_enclosure(
 
             enclosure = enclosure.cut(screw_hole)
 
+    if lid_fasteners is not None:
+        enclosure = add_lid_fasteners(enclosure, dimensions, lid_fasteners)
+
     return enclosure
+
+
+def lid_fastener_positions(dimensions, config=None):
+    config = config or {}
+    offset = config.get("side_offset_mm", 2.0)
+    inset = config.get("end_inset_mm", 2.0)
+    x = dimensions["outer_width_mm"] / 2 + offset
+    y = dimensions["outer_length_mm"] / 2 - inset
+    return [(-x, -y), (-x, y), (x, -y), (x, y)]
+
+
+def validate_lid_fasteners(dimensions, config=None):
+    config = config or {}
+    diameter = config.get("boss_diameter_mm", 5.0)
+    hole = config.get("hole_diameter_mm", 2.0)
+    height = config.get("boss_height_mm", 5.0)
+    overlap = config.get("attachment_overlap_mm", 0.4)
+    offset = config.get("side_offset_mm", 2.0)
+    lid_thickness = config.get("lid_thickness_mm", 2.0)
+    errors = []
+    values = (diameter, hole, height, overlap, offset, lid_thickness)
+    if any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in values):
+        return ["Lid fastener parameters must be finite numbers."]
+    if min(values) <= 0 or hole >= diameter or overlap >= diameter / 2:
+        errors.append("Invalid lid fastener dimensions.")
+    if offset >= diameter / 2 or diameter / 2 - offset < overlap:
+        errors.append("Lid bosses must overlap the enclosure side walls.")
+    if height >= dimensions["outer_height_mm"]:
+        errors.append("Lid boss height exceeds enclosure height.")
+    if config.get("end_inset_mm", 2.0) <= 0:
+        errors.append("Lid boss end inset must be positive.")
+    return errors
+
+
+def add_lid_fasteners(enclosure, dimensions, config=None):
+    config = config or {}
+    errors = validate_lid_fasteners(dimensions, config)
+    if errors:
+        raise ValueError(" ".join(errors))
+    diameter = config.get("boss_diameter_mm", 5.0)
+    hole = config.get("hole_diameter_mm", 2.0)
+    height = config.get("boss_height_mm", 5.0)
+    top = dimensions["outer_height_mm"] / 2
+    for x, y in lid_fastener_positions(dimensions, config):
+        boss = (cq.Workplane("XY").circle(diameter / 2).extrude(height)
+                .translate((x, y, top - height)))
+        enclosure = enclosure.union(boss)
+        bore = (cq.Workplane("XY").circle(hole / 2).extrude(height)
+                .translate((x, y, top - height)))
+        enclosure = enclosure.cut(bore)
+    return enclosure
+
+
+def create_screw_lid(dimensions, config=None):
+    config = config or {}
+    errors = validate_lid_fasteners(dimensions, config)
+    if errors:
+        raise ValueError(" ".join(errors))
+    thickness = config.get("lid_thickness_mm", 2.0)
+    diameter = config.get("boss_diameter_mm", 5.0)
+    hole = config.get("hole_diameter_mm", 2.0)
+    top = dimensions["outer_height_mm"] / 2
+    lid = (cq.Workplane("XY")
+           .box(dimensions["outer_width_mm"], dimensions["outer_length_mm"], thickness)
+           .translate((0, 0, top + thickness / 2)))
+    for x, y in lid_fastener_positions(dimensions, config):
+        tab = (cq.Workplane("XY").circle(diameter / 2).extrude(thickness)
+               .translate((x, y, top)))
+        lid = lid.union(tab)
+        bore = (cq.Workplane("XY").circle(hole / 2).extrude(thickness)
+                .translate((x, y, top)))
+        lid = lid.cut(bore)
+    return lid
 
 
 def export_enclosure(enclosure, output_path):
@@ -140,6 +217,7 @@ def verify_enclosure(
     wall_thickness_mm,
     usb_port=None,
     mounting=None,
+    lid_fasteners=None,
 ):
     errors = []
     tolerance = 0.001
@@ -161,9 +239,17 @@ def verify_enclosure(
     # 3. Check outer dimensions.
     bbox = solid.BoundingBox()
 
+    expected_width = dimensions["outer_width_mm"]
+    expected_length = dimensions["outer_length_mm"]
+    if lid_fasteners is not None:
+        diameter = lid_fasteners.get("boss_diameter_mm", 5.0)
+        offset = lid_fasteners.get("side_offset_mm", 2.0)
+        inset = lid_fasteners.get("end_inset_mm", 2.0)
+        expected_width = max(expected_width, expected_width + 2 * offset + diameter)
+        expected_length = max(expected_length, expected_length - 2 * inset + diameter)
     expected_dimensions = (
-        dimensions["outer_width_mm"],
-        dimensions["outer_length_mm"],
+        expected_width,
+        expected_length,
         dimensions["outer_height_mm"],
     )
 
@@ -214,7 +300,7 @@ def verify_enclosure(
 
         expected_volume += 4 * single_standoff_volume
 
-    if abs(solid.Volume() - expected_volume) > tolerance:
+    if lid_fasteners is None and abs(solid.Volume() - expected_volume) > tolerance:
         errors.append("Incorrect enclosure volume.")
 
     # 5. Check wall thickness.

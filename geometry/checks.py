@@ -5,6 +5,8 @@ from geometry.cad_model import (
     export_enclosure,
     verify_enclosure,
     validate_usb_port,
+    create_screw_lid,
+    validate_lid_fasteners,
 )
 from geometry.board_data import get_board_data
 
@@ -65,11 +67,11 @@ def check_geometry(design_spec):
     elif wall_thickness < MIN_WALL_THICKNESS_MM:
         errors.append("Wall thickness is below the minimum requirement.")
 
-    # 5. Check unsupported features.
     lid = design_spec.get("lid") or {}
+    if not isinstance(lid, dict):
+        errors.append("Lid must be an object.")
+        lid = {}
 
-    if lid.get("present") is True:
-        warnings.append("Lid geometry is not implemented yet.")
 
     if design_spec.get("port_requirements"):
         warnings.append("Port alignment has not been verified.")
@@ -117,6 +119,9 @@ def check_geometry(design_spec):
         dimensions["outer_height_mm"] = (
             dimensions["inner_height_mm"] + wall_thickness
         )
+
+    if dimensions is not None and lid.get("present") is True:
+        errors.extend(validate_lid_fasteners(dimensions, lid))
 
     # 7. Return structured result.
     return {
@@ -176,6 +181,9 @@ def validate_and_generate(design_spec, output_path=None):
             result["valid"] = False
             return result
 
+    lid = design_spec.get("lid") or {}
+    fasteners = lid if lid.get("present") is True else None
+
     # 5. Generate and verify CAD geometry.
     try:
         enclosure = create_enclosure(
@@ -183,6 +191,7 @@ def validate_and_generate(design_spec, output_path=None):
             wall_thickness,
             usb_port=usb_port,
             mounting=pcb_mounting,
+            lid_fasteners=fasteners,
         )
 
         geometry_errors = verify_enclosure(
@@ -191,9 +200,19 @@ def validate_and_generate(design_spec, output_path=None):
             wall_thickness,
             usb_port=usb_port,
             mounting=pcb_mounting,
+            lid_fasteners=fasteners,
         )
 
         result["errors"].extend(geometry_errors)
+
+        if fasteners is not None:
+            lid_model = create_screw_lid(dimensions, fasteners)
+            if lid_model.solids().size() != 1 or not lid_model.val().isValid():
+                result["errors"].append("Invalid screw-fastened lid geometry.")
+            if output_path is not None and not result["errors"]:
+                lid_path = str(output_path).removesuffix(".step") + "_lid.step"
+                export_enclosure(lid_model, lid_path)
+                result["lid_output_path"] = lid_path
 
         # 6. Export CAD file if verification succeeds.
         if not geometry_errors and output_path is not None:
