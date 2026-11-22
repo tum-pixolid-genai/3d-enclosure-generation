@@ -31,3 +31,7 @@ pre { background:#f0f2ef; padding:10px; border-radius:6px; overflow:auto; font-s
 #viewer { height:440px; border-radius:6px; overflow:hidden; background:#f4f5f2; }
 #viewer canvas { display:block; }
 #dims { color:var(--muted); font-size:13px; }
+
+/* keep the 3D view in sight while the left column scrolls */
+main > section:nth-child(2) { position: sticky; top: 16px; align-self: start; }
+@media (max-width:900px) { main > section:nth-child(2) { position: static; } }

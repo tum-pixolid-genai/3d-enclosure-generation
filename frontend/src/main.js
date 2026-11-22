@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 import { MOCKS } from './mock.js';
+import { initImage } from './image.js';
+import { initAssembly } from './assembly.js';
 
 const USE_MOCK = !location.search.includes('real'); // open /?real to use the real backend
 const API = ''; // later: a Vite proxy forwards /design to the backend
@@ -108,6 +110,36 @@ function loadSTL(url) { // loads the real model from the backend (model_url)
     geo.translate(-(b.min.x + b.max.x) / 2, -b.min.y, -(b.min.z + b.max.z) / 2); // centre it, bottom on the grid
     setModel(new THREE.Mesh(geo, material));
   }, undefined, (e) => list('Could not load the model', [String((e && e.message) || e)]));
+}
+
+// Two parts in one frame (enclosure + lid). Both are moved by the same offset, so the lid keeps its place on the case.
+const lidMaterial = new THREE.MeshStandardMaterial({ color: 0xc9822b, roughness: 0.55 });
+function loadStl(url) {
+  return new Promise((res, rej) => new STLLoader().load(url, (geo) => { geo.rotateX(-Math.PI / 2); res(geo); }, undefined, () => rej(new Error('Could not load ' + url))));
+}
+const EXPLODE = 30; // mm the lid is lifted in the exploded view
+function showParts(enclosure, lid) { // enclosure, lid: THREE.Object3D with positions in the same frame
+  const g = new THREE.Group();
+  g.add(enclosure, lid);
+  const b = new THREE.Box3().setFromObject(g), c = b.getCenter(new THREE.Vector3());
+  enclosure.position.sub(new THREE.Vector3(c.x, b.min.y, c.z));
+  lid.position.sub(new THREE.Vector3(c.x, b.min.y, c.z));
+  const lidY = lid.position.y;
+  setModel(g);
+  return (mode) => { // 'enclosure' | 'lid' | 'closed' | 'exploded'
+    enclosure.visible = mode !== 'lid';
+    lid.visible = mode !== 'enclosure';
+    lid.position.y = lidY + (mode === 'exploded' ? EXPLODE : 0);
+  };
+}
+async function loadAssembly(encUrl, lidUrl) {
+  const [a, b] = await Promise.all([loadStl(encUrl), loadStl(lidUrl)]);
+  return showParts(new THREE.Mesh(a, material), new THREE.Mesh(b, lidMaterial));
+}
+function standInAssembly(w, l, h, t) { // mock mode: boxes from the known case size
+  const lid = new THREE.Mesh(new THREE.BoxGeometry(w, t, l), lidMaterial);
+  lid.position.set(0, h + t / 2, 0);
+  return showParts(sampleCase(w, l, h, t), lid);
 }
 $('download').textContent = 'Download STEP';
 const stlBtn = add($('download').parentElement, 'button', 'Download STL', 'chip');
@@ -237,3 +269,6 @@ $('go').onclick = async () => {
     $('go').disabled = false;
   }
 };
+
+const tabs = initImage({ api: API, useMock: USE_MOCK, loadSTL, clearModel: () => { setModel(null); $('dims').textContent = ''; }, saveFile });
+initAssembly({ api: API, useMock: USE_MOCK, addTab: tabs.addTab, loadAssembly, standInAssembly, saveFile, setDims: (t) => { $('dims').textContent = t; } });

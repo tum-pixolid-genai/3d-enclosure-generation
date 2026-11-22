@@ -18,7 +18,9 @@ npm run dev
 
 - `index.html`: page structure
 - `src/main.js`: page logic, 3D viewer (three.js), backend call
-- `src/mock.js`: mock responses
+- `src/mock.js`: mock responses (text request)
+- `src/image.js`, `src/mock_image.js`: image request tab and its mock data (four real image agent outputs)
+- `src/assembly.js`: Pi 4 assembly tab
 - `src/style.css`: styles
 - `vite.config.js`: dev proxy to the backend
 
@@ -29,6 +31,18 @@ npm run dev
 - `model_url` and `GET /design/{task_id}/model.stl` for the 3D view and the STL download
 - `GET /design/{task_id}/download` for the STEP download
 - `GET /health` for the "Real backend: online" label
+
+## Image request tab
+
+Upload a PNG or JPEG (16 to 2048 pixels per side, up to 10 MiB) with an optional text requirement. The page sends `POST /image` and shows a review screen: the image with the detected openings, the first and the checked design spec, what the agent changed and why, the visual evidence, and the reasons why a review is needed. The approve button stays disabled while the request has unsupported features, open questions or unverified features, or while the text requirement, board or wall thickness is missing. The backend makes the final decision (`POST /image/{task_id}/approve`).
+
+In mock mode the tab shows four real outputs of the image agent (`src/mock_image.js`) instead of calling the backend.
+
+## Pi 4 assembly tab
+
+The button calls `POST /design/pi4-assembly` (no request body). The page shows `assembly_validated` as the automatic-check result, the numbers in `verification_metrics` (collision volume before and after the openings, PCB hole alignment, lid screw hole alignment), the full `verification_summary`, a 3D view of case and lid (from `downloads.enclosure_stl` and `downloads.lid_stl`) and download buttons for `enclosure`, `lid` (STEP), both STL files and `report`. When the status is `geometry_blocked` no files are offered.
+
+The backend needs the Raspberry Pi 4 reference STEP file (see the backend README), otherwise it answers 503. This route is currently on the branch `integration/pi4-assembly`. In mock mode the tab shows the numbers of the first local run and a stand-in model.
 
 ## Known limits
 
