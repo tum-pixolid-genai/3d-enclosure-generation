@@ -32,9 +32,61 @@ Scope: request text -> design spec. No geometry, no prints. 184 standard tasks.
   For the other boards the mock "asks" only because the board is unknown, so those 12 are not counted.
 - The one Pi 4 miss is **BM-PI4-034**: "...with no lid and power openings on the left."
   The parser loses the power opening after "no lid". Report to the Agent owner.
-- Geometry spec-level check (cadquery stubbed, no STEP files): accepts 46/46 Pi 4 specs and
-  rejects all 138 for other boards (no board data). Warnings on the accepted specs say lid,
-  port alignment and wall-mount holes are not implemented, so "valid" is not "works".
+- Geometry spec-level check, measured on 16 Nov against the earlier Geometry PR #2 (cadquery
+  stubbed, no STEP files): accepted 46/46 Pi 4 specs and rejected all 138 for other boards
+  (no board data). Geometry has changed since (22 Nov: screw lid, port cutouts, assembly
+  verification), so this number is **outdated and should be re-measured**.
+  In the current `geometry/checks.py` the spec check still warns "Port alignment has not been
+  verified" and "Wall mounting holes are not implemented yet"; the cutouts are computed from the
+  STEP file in the separate Pi 4 assembly route, not from the request. "Valid" is not "works".
+
+## Running the benchmark on the real LLM agent (stage 2)
+
+`stats/run_llm_stage.py` sends the Pi 4 tasks through the local Qwen agent
+(Agent PR #6: `HardenedAgent(LLMAgent())`) and records, per task:
+
+- whether the design spec equals the expected values (`spec_match`),
+- whether the agent "claimed done", meaning it asked no question and did not
+  crash (`claims_done`), and whether it was wrong anyway (`false_done`,
+  research question 2),
+- the capability gate decision (`gate_status`) and any error code.
+
+```
+python stats/run_llm_stage.py --tasks benchmark/tasks.json \
+       --repo <repo root with agent/llm_agent.py> \
+       --boards raspberry_pi_4 --out stats/llm_stage_results.csv
+```
+
+It needs a local Ollama server with the Qwen model, so it has to be run by
+someone who has it (Agent owner). `--stub` replaces Qwen with the rule-based
+mock to test the script only; stub numbers are not LLM results.
+Only Pi 4 is run by default because the Geometry module has board data for
+Pi 4 only. Scope: design step only (no CAD, no print).
+
+## Running the benchmark through the real Backend (stage 2)
+
+`stats/run_backend_experiment.py` posts each request to the Backend's `POST /design`
+and records the pipeline's own answer (`generated`, `generated_with_warnings`,
+`needs_clarification`, `unsupported`, `review_required`, `geometry_blocked`,
+`export_failed`), the time per request, and whether the returned design spec equals the
+expected values. "System said done" = `generated*`; "false done" = said done while the spec
+differs from the expected answer. It starts from the Backend's `/design` endpoint as of
+22 Nov (`integration/pi4-assembly`). Only the spec is compared automatically; whether the
+CAD really fits is for the Geometry checks and the physical blind test.
+Tested only against a stand-in server that used the mock agent, never against the real
+Backend, so try it on a few tasks first (`--limit 3`).
+
+Setup (from `backend/README.md` on `integration/pi4-assembly`): `pip install -r
+backend/requirements.txt` (fastapi, uvicorn, jsonschema, cadquery), then
+`python -m uvicorn backend.main:app`. The Backend's default text agent is the **mock**
+(`PIXOLID_TEXT_AGENT=mock`), so this runs without Ollama. For the real model start Ollama
+with `qwen3:4b-instruct` and set `PIXOLID_TEXT_AGENT=llm` and `PIXOLID_OLLAMA_PORT=11439`.
+The result file must say which of the two was used.
+
+```
+python stats/run_backend_experiment.py --tasks benchmark/tasks.json \
+       --base-url http://127.0.0.1:8000 --boards raspberry_pi_4 --out stats/backend_results.csv
+```
 
 ## Not done / not measured yet
 
@@ -50,7 +102,7 @@ Scope: request text -> design spec. No geometry, no prints. 184 standard tasks.
 Code in `baseline/`, `stats/` and `benchmark/generate_tasks.py` follows the repository's
 Apache-2.0 licence. `benchmark/tasks.json`, `stats/spec_stage_results.csv` and the CSV
 templates are data and follow the repository's CC BY 4.0 data licence. The benchmark requests
-are synthetic and adapted from the example scenario in the TUM GenAI Project Catalog, Project 02.
+are synthetic. Size and example scenario follow the TUM GenAI Project Catalog, Project 02; the task categories are the benchmark author's own design, based on the fields of the Agent's design spec v0.1 (see `benchmark/README.md`, "Design basis").
 The scripts use only the Python standard library (running the Agent also needs `jsonschema`).
 
 ## GenAI assistance
