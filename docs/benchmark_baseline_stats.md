@@ -148,7 +148,7 @@ harder items (paraphrases, vague or conflicting requests, other units). No physi
 - The mock sections above use the rule-based mock; Qwen results are in their own section. No retry loop, so no retry data yet.
 - No physical prints. Blind-test tooling is ready but untested on real data.
 - Pi 4 data checked against the official mechanical drawing; port lists for the other three boards are from general knowledge and still need checking.
-- Open question for Geometry: Pi 4 USB/Ethernet sit on the short edge and power/HDMI on the long edge, so some "same wall" requests may be physically impossible; board orientation to be confirmed.
+- Open question for Geometry: Pi 4 USB/Ethernet sit on the short edge and power/HDMI on the long edge, so some "same wall" requests may be physically impossible. Also, per the team chat, port cutouts are currently computed automatically from the STEP file (5 cutouts, 3 on x+ and 2 on y-) and cannot be chosen per request, so the "same side / different sides" tasks (16 per board) cannot be fulfilled by design yet. To be confirmed with the Geometry owner; these tasks may be re-labelled "not supported yet".
 - Comparison to a *geometric search* baseline (for irregular shapes) is not started.
 
 ## Licence and provenance
