@@ -57,8 +57,8 @@ python stats/run_llm_stage.py --tasks benchmark/tasks.json \
        --boards raspberry_pi_4 --out stats/llm_stage_results.csv
 ```
 
-It needs a local Ollama server with the Qwen model, so it has to be run by
-someone who has it (Agent owner). `--stub` replaces Qwen with the rule-based
+It needs a local Ollama server with `qwen3:4b-instruct` (the script uses port 11439 by default;
+if Ollama runs on its default port 11434, pass `--port 11434`). `--stub` replaces Qwen with the rule-based
 mock to test the script only; stub numbers are not LLM results.
 Only Pi 4 is run by default because the Geometry module has board data for
 Pi 4 only. Scope: design step only (no CAD, no print).
@@ -102,7 +102,7 @@ python stats/run_backend_experiment.py --tasks benchmark/tasks.json \
 
 - Standard requests (n=46): the Backend said "done" for 1 (2.2%, 95% CI 0.4-11.3%); the returned
   design spec equals the expected one for 45 (97.8%, CI 88.7-99.6%); "said done but spec wrong" 0/1.
-- Clarification tests: 4/4 asked instead of guessing (n is tiny; CI 51-100%).
+- Clarification tests: the mock asked 4/4 (n is tiny; CI 51-100%); the Qwen run below asked 1/4.
 - Reading the request is mostly right; the pipeline stops afterwards. The gate currently lets only
   requests with an explicit "no lid" and no ports, no wall-mount holes through (read from
   `agent/capability_check.py` in PR #6): BM-PI4-004 is the only such task in the benchmark.
@@ -110,12 +110,42 @@ python stats/run_backend_experiment.py --tasks benchmark/tasks.json \
 - Time per request: median 0.0 s, max 0.4 s (mock agent, no model call). These are not Qwen times.
 - The generated model carries warnings and was neither checked physically nor printed.
   The single "done" says nothing yet about real-world fit.
-- Not measured: Qwen (needs Ollama), retries, other boards, prints.
+- Not measured in this mock run: Qwen (see the Qwen section below), retries, other boards, prints.
+
+## Qwen run (23 Nov 2026, real LLM agent, Pi 4 tasks only)
+
+Model `qwen3:4b-instruct` via Ollama on a MacBook (Apple silicon), `PIXOLID_TEXT_AGENT=llm`.
+Two runs over the 50 Pi 4 tasks: `stats/run_llm_stage.py` (agent only, with raw model draft
+before the rule-based corrections) and `stats/run_backend_experiment.py` (full Backend `/design`).
+Files: `stats/llm_stage_results.csv`, `stats/backend_qwen_results.csv`.
+
+Standard requests (46):
+- Raw model draft matches the expected spec: 46/46 (100%, Wilson CI 92.3-100%).
+  The rule-based corrections changed 0 of 46, so the result is not produced by the corrections.
+- Through the Backend: generated 1/46 (2%, CI 0.4-11.3%), the same single task as with the mock
+  agent (BM-PI4-004, "no lid"; status `generated_with_warnings`). The other 45 were answered
+  `unsupported` by the capability gate. False "done": 0.
+- Reason for 1/46: the gate does not pass lid, port or wall-mount requests to `/design` yet.
+  So the benchmark is currently limited by the pipeline, not by reading the request.
+
+Clarification requests (4; n is tiny, CI 4.6-69.9% for 1/4):
+- Only BM-PI4-047 (conflicting "removable lid and no lid") was actually asked back.
+- BM-PI4-048 (VGA port, which does not exist on this board), 049 (vague "nice case") and
+  050 (0.08 inch wall thickness) were not asked back by the model. Nothing was generated for
+  any of the four, because the gate answered `unsupported` (048, 050) or `review_required` (049).
+  So no false "done", but the stop came from the gate, not from the model noticing the problem.
+
+Time per request: median 7.6 s, max 12.6 s through the Backend (total 406 s for 50);
+3-17 s per request in the agent-only run.
+
+Limits: one board, one model, one run each (temperature 0, seed 42), tasks written by one person
+and not yet reviewed by teammates; the benchmark looks too easy for this model (ceiling) and needs
+harder items (paraphrases, vague or conflicting requests, other units). No physical check or print.
 
 ## Not done / not measured yet
 
 - No STEP/STL generation was run here (CadQuery not installed in my environment).
-- No real LLM was called; "AI" above is the rule-based mock. No retry loop, so no "claims done" data yet.
+- The mock sections above use the rule-based mock; Qwen results are in their own section. No retry loop, so no retry data yet.
 - No physical prints. Blind-test tooling is ready but untested on real data.
 - Pi 4 data checked against the official mechanical drawing; port lists for the other three boards are from general knowledge and still need checking.
 - Open question for Geometry: Pi 4 USB/Ethernet sit on the short edge and power/HDMI on the long edge, so some "same wall" requests may be physically impossible; board orientation to be confirmed.
