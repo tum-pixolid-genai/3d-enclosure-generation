@@ -12,6 +12,11 @@ Ollama server with the Qwen model (port 11439) -- unless you use --stub.
   --stub  replaces Qwen by the rule-based mock (only to test this script
           without Ollama; the numbers are then NOT LLM results).
 
+The Agent keeps the model's own draft separate from the draft after its
+rule-based "semantic corrections" (HardenedAgent). Columns spec_match /
+false_done use the corrected draft (what the pipeline passes on); the raw_*
+columns use the model's own draft. Only the raw columns measure the model.
+
 Definitions (used for research question 2, "how often does AI say done when
 it failed"):
   claims_done  = the agent did not ask a question and did not crash
@@ -70,7 +75,8 @@ def main():
                "expects_clarification": t["expected"]["needs_clarification"],
                "error_code": "", "gate_status": "", "allow_geometry": "",
                "claims_done": "", "spec_match": "", "false_done": "",
-               "seconds": ""}
+               "raw_spec_match": "", "raw_claims_done": "",
+               "raw_false_done": "", "n_corrections": "", "seconds": ""}
         t0 = time.time()
         try:
             res = agent.extract(t["request"])
@@ -83,6 +89,15 @@ def main():
             if not t["expected"]["needs_clarification"]:
                 row["false_done"] = bool(row["claims_done"]
                                          and not cmp_["spec_match"])
+            # the model's own draft, before the rule-based corrections
+            raw = res.model.design_spec
+            raw_cmp = compare(raw, t)
+            row["raw_spec_match"] = raw_cmp["spec_match"]
+            row["raw_claims_done"] = not raw["needs_clarification"]
+            row["n_corrections"] = len(res.changes)
+            if not t["expected"]["needs_clarification"]:
+                row["raw_false_done"] = bool(row["raw_claims_done"]
+                                             and not raw_cmp["spec_match"])
         except AgentError as e:
             row["error_code"] = e.code
             row["claims_done"] = False
@@ -105,6 +120,13 @@ def main():
     print("spec equals expected :", fmt_rate(len(ok), len(std)))
     print("said 'done' but wrong:", fmt_rate(len(fd), len(done)),
           "(of the cases where it claimed done)")
+    print("RAW model draft equals expected (before corrections):",
+          fmt_rate(sum(r["raw_spec_match"] is True for r in std), len(std)))
+    rdone = [r for r in std if r["raw_claims_done"] is True]
+    print("RAW said 'done' but wrong:",
+          fmt_rate(sum(r["raw_false_done"] is True for r in std), len(rdone)))
+    print("tasks where the corrections changed the draft:",
+          sum(bool(r["n_corrections"]) for r in std), "of", len(std))
     print("errors / crashes     :", sum(bool(r["error_code"]) for r in rows))
     print("capability gate allows geometry:",
           sum(r["allow_geometry"] is True for r in std), "of", len(std))

@@ -124,9 +124,11 @@ def main():
           fmt_rate(sum(r["false_done"] is True for r in std), len(done)),
           "(of the cases where it said done)")
     print("== Clarification requests ==")
-    print("asked instead of guessing :",
+    print("asked a question (needs_clarification):",
           fmt_rate(sum(r["status"] == "needs_clarification" for r in clar),
                    len(clar)))
+    print("did not generate anything (asked, blocked or sent to review):",
+          fmt_rate(sum(not r["system_says_done"] for r in clar), len(clar)))
     times = sorted(r["seconds"] for r in rows)
     print(f"\nTime per request: median {times[len(times)//2]}s, "
           f"max {times[-1]}s, total {sum(times):.0f}s")
