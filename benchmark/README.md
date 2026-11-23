@@ -96,8 +96,12 @@ Difficulty: 96 easy, 88 medium, 16 hard.
   `../protocol/shape_register.csv`).
 - Slots 47-50 of each board are Agent-behaviour tests, not geometry tests;
   report them separately from the success rate.
-- Geometry's current module does not yet model lid, standoffs-to-board fit
-  or connector keepouts, so most tasks cannot pass "all checks" yet.
+- Since 22 Nov Geometry has a screw-fastened lid, automatic port cutouts and an assembly
+  check, but only in the separate Pi 4 route (`/design/pi4-assembly`, no request content,
+  fixed reference STEP). `/design` still does not use them, so most tasks cannot pass
+  "all checks" yet. Port cutouts are computed from the STEP file, not from the request:
+  a user cannot yet choose which wall a port goes on, so the "same side / different sides"
+  tasks ask for something the system does not offer yet (to be confirmed with the Geometry owner).
 
 ## Run
 
