@@ -12,7 +12,23 @@ npm run dev
 ```
 
 - `http://localhost:5173/` runs in **mock mode**: the "Mock result" dropdown picks a fake response in the same shape as the real `POST /design` response.
-- `http://localhost:5173/?real` talks to the **real backend**. Start the backend on port 8000 first. `vite.config.js` forwards `/design` and `/health` to `http://127.0.0.1:8000`, so no CORS setup is needed.
+- `http://localhost:5173/?real` talks to the **real backend**. Start the backend on port 8000 first. `vite.config.js` forwards `/design`, `/health` and `/image` to `http://127.0.0.1:8000`, so no CORS setup is needed.
+
+Without `?real` the page stays in mock mode, whatever backend is configured.
+
+### Using a backend on another computer
+
+`BACKEND_URL` sets the proxy target, so the page can use a backend someone else is running:
+
+```
+# same network; the backend must be started with --host 0.0.0.0 and the port must be open
+BACKEND_URL=http://192.168.1.23:8001 npm run dev
+
+# Tailscale Serve: the backend stays on 127.0.0.1 and Tailscale publishes it over HTTPS, no port
+BACKEND_URL=https://<machine>.<tailnet>.ts.net npm run dev
+```
+
+Open `<BACKEND_URL>/health` in a browser first. It has to answer `{"status":"ok"}` before the page can work. `Connection refused` means nothing is listening on that port: the backend is not running, or it is bound to `127.0.0.1` only. A request that hangs and then times out usually means a firewall is blocking the port.
 
 ## Files
 
@@ -35,6 +51,12 @@ npm run dev
 ## Image request tab
 
 Upload a PNG or JPEG (16 to 2048 pixels per side, up to 10 MiB) with an optional text requirement. The page sends `POST /image` and shows a review screen: the image with the detected openings, the first and the checked design spec, what the agent changed and why, the visual evidence, and the reasons why a review is needed. The approve button stays disabled while the request has unsupported features, open questions or unverified features, or while the text requirement, board or wall thickness is missing. The backend makes the final decision (`POST /image/{task_id}/approve`).
+
+The tab uses `POST /image` (base64 image, instructions) and `POST /image/{task_id}/approve`, which takes `approved: true`, a `reviewer` name and the `source_result_sha256` from the first response, echoed unchanged. After approval the response carries `step_url` and `stl_url`; the downloads answer 404 before approval.
+
+**The image routes only exist when the backend is started with the image agent configured** (`PIXOLID_IMAGE_AGENT_PORT`, pointing at the Ollama port that serves the vision model). Without it `POST /image` answers 404 and the page says so. The vision model also has to be installed on the computer that runs the backend.
+
+A real analysis took 177.7 s in our test (3 min 01 s end to end in the page) and the generation after approval about 3 s, so the page waits up to 300 s for an image request. Text requests use 150 s.
 
 In mock mode the tab shows four real outputs of the image agent (`src/mock_image.js`) instead of calling the backend.
 

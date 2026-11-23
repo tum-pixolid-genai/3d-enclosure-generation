@@ -152,7 +152,7 @@ export function initImage({ api, useMock, loadSTL, clearModel, saveFile }) {
           else if (d && d.message) msg = d.message;
           else if (Array.isArray(d)) msg = 'The request was not accepted. Check the image and the text.';
         } catch (e) { /* keep the generic message */ }
-        if (r.status === 404 && path === '/image') msg = 'This backend has no image routes. They are only switched on when the backend is started with the image model (PIXOLID_IMAGE_AGENT_PORT), which is the case on Peicen\'s computer, not on a local backend.';
+        if (r.status === 404 && path === '/image') msg = 'This backend has no image routes. They are only switched on when the backend is started with the image agent configured (PIXOLID_IMAGE_AGENT_PORT, pointing at the Ollama port that serves the vision model). See the README.';
         throw new Error(msg);
       }
       return await r.json();
