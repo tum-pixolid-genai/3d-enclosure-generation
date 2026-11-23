@@ -88,6 +88,30 @@ python stats/run_backend_experiment.py --tasks benchmark/tasks.json \
        --base-url http://127.0.0.1:8000 --boards raspberry_pi_4 --out stats/backend_results.csv
 ```
 
+## First end-to-end run through the Backend (23 Nov 2026, mock text agent)
+
+`stats/run_backend_experiment.py` on the 50 Raspberry Pi 4 tasks against the Backend of branch
+`integration/pi4-assembly` with its default **mock** text agent (not Qwen). Raw rows:
+`stats/backend_mock_results.csv`. Python 3.12, local machine; one run, no repetitions.
+
+| Backend status | Tasks |
+| --- | --- |
+| unsupported (stopped by the capability gate) | 44 |
+| needs_clarification | 5 (the 4 clarification tests + BM-PI4-034) |
+| generated_with_warnings | 1 (BM-PI4-004, "...with no lid.") |
+
+- Standard requests (n=46): the Backend said "done" for 1 (2.2%, 95% CI 0.4-11.3%); the returned
+  design spec equals the expected one for 45 (97.8%, CI 88.7-99.6%); "said done but spec wrong" 0/1.
+- Clarification tests: 4/4 asked instead of guessing (n is tiny; CI 51-100%).
+- Reading the request is mostly right; the pipeline stops afterwards. The gate currently lets only
+  requests with an explicit "no lid" and no ports, no wall-mount holes through (read from
+  `agent/capability_check.py` in PR #6): BM-PI4-004 is the only such task in the benchmark.
+  Lid, port and wall-mount requests are all answered `unsupported`.
+- Time per request: median 0.0 s, max 0.4 s (mock agent, no model call). These are not Qwen times.
+- The generated model carries warnings and was neither checked physically nor printed.
+  The single "done" says nothing yet about real-world fit.
+- Not measured: Qwen (needs Ollama), retries, other boards, prints.
+
 ## Not done / not measured yet
 
 - No STEP/STL generation was run here (CadQuery not installed in my environment).
