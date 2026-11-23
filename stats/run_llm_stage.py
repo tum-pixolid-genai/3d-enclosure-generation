@@ -37,7 +37,7 @@ from analyze import fmt_rate  # noqa: E402
 from run_spec_stage import compare  # noqa: E402
 
 
-def load(repo, stub):
+def load(repo, stub, port=None):
     sys.path.insert(0, repo)
     from agent.hardened_agent import HardenedAgent
     from agent.llm_agent import AgentError, Extraction, LLMAgent
@@ -49,7 +49,8 @@ def load(repo, stub):
                 self.request_validator.validate(request)
                 return Extraction(extract_design(request), "", {})
         return HardenedAgent(Stub()), AgentError
-    return HardenedAgent(LLMAgent()), AgentError
+    llm = LLMAgent(port=port) if port else LLMAgent()
+    return HardenedAgent(llm), AgentError
 
 
 def main():
@@ -60,13 +61,16 @@ def main():
     ap.add_argument("--boards", default="raspberry_pi_4",
                     help="comma list; the geometry module only has Pi 4 so far")
     ap.add_argument("--out", default="llm_stage_results.csv")
+    ap.add_argument("--port", type=int, default=None,
+                    help="Ollama port (default: the Agent's own default, 11439; "
+                         "the standard Ollama app uses 11434)")
     ap.add_argument("--stub", action="store_true")
     a = ap.parse_args()
 
     boards = set(a.boards.split(","))
     tasks = [t for t in json.load(open(a.tasks, encoding="utf-8"))["tasks"]
              if t["board_id"] in boards]
-    agent, AgentError = load(os.path.abspath(a.repo), a.stub)
+    agent, AgentError = load(os.path.abspath(a.repo), a.stub, a.port)
 
     rows = []
     for i, t in enumerate(tasks, 1):
