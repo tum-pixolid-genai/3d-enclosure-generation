@@ -1,0 +1,4 @@
+task_id,board_id,category,expects_clarification,http_status,status,error_code,gate_status,system_says_done,spec_match,false_done,seconds,geometry_scope,assembly_validated,all_cutouts_applied,assembly_checks_match
+BM-PI4-ASM-001,raspberry_pi_4,screwed_lid_automatic_cutouts,False,200,generated,,allow,True,True,False,16.18,,True,True,True
+BM-PI4-ASM-002,raspberry_pi_4,screwed_lid_automatic_cutouts,False,200,generated,,allow,True,True,False,17.48,,True,True,True
+BM-PI4-ASM-003,raspberry_pi_4,screwed_lid_automatic_cutouts,False,200,generated,,allow,True,True,False,17.98,,True,True,True

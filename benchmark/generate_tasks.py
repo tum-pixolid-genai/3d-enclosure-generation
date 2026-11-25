@@ -179,7 +179,7 @@ def realise(board_id, board, idx, s):
             wall_thickness_mm=float(s["wall"]) if s["wall"] else None,
         )
 
-    return {
+    task = {
         "task_id": tid,
         "board_id": board_id,
         "category": cat,
@@ -187,6 +187,9 @@ def realise(board_id, board, idx, s):
         "request": {"task_id": tid, "request_text": text, "language": "en"},
         "expected": exp,
     }
+    if board_id == "raspberry_pi_4" and cat in {"multi_port_same_side", "multi_port_diff_sides"}:
+        task["geometry_scope"] = "unsupported_user_selected_opening_sides"
+    return task
 
 
 def make_unique(board_id, board, idx, s, seen):
@@ -207,9 +210,37 @@ def make_unique(board_id, board, idx, s, seen):
     raise RuntimeError(f"cannot make {board_id} slot {idx} unique")
 
 
+def pi4_assembly_tasks():
+    """Keep the new assembly cohort outside the historical 50 Pi 4 tasks."""
+    board_id = "raspberry_pi_4"
+    requests = [
+        ("Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and automatic port openings.", None),
+        ("Make a rectangular case for Raspberry Pi 4 with automatic port cutouts and a screwed lid.", None),
+        ("Create a rectangular case for Raspberry Pi 4 with a screwed lid, STEP-based port cutouts, and 2 mm wall thickness.", 2.0),
+    ]
+    tasks = []
+    for index, (prompt, wall) in enumerate(requests, start=1):
+        task_id = f"BM-PI4-ASM-{index:03d}"
+        tasks.append({
+            "task_id": task_id,
+            "board_id": board_id,
+            "category": "screwed_lid_automatic_cutouts",
+            "difficulty": "easy",
+            "request": {"task_id": task_id, "request_text": prompt, "language": "en"},
+            "expected": {
+                "board_id": board_id, "lid": "screwed", "ports": [],
+                "wall_mount_holes": 0, "wall_thickness_mm": wall,
+                "needs_clarification": False, "assembly_validated": True,
+                "all_cutouts_applied": True,
+            },
+        })
+    return tasks
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="tasks.json")
+    ap.add_argument("--assembly-out", help="write a separate Pi 4 assembly cohort")
     args = ap.parse_args()
 
     tasks = []
@@ -232,6 +263,13 @@ def main():
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=2, ensure_ascii=False)
     print(f"wrote {len(tasks)} tasks to {args.out}")
+    if args.assembly_out:
+        assembly_tasks = pi4_assembly_tasks()
+        with open(args.assembly_out, "w", encoding="utf-8") as f:
+            json.dump({"benchmark_version": "pi4-assembly-0.1", "n_tasks": len(assembly_tasks),
+                       "tasks": assembly_tasks}, f, indent=2)
+            f.write("\n")
+        print(f"wrote {len(assembly_tasks)} tasks to {args.assembly_out}")
 
 
 if __name__ == "__main__":

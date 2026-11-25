@@ -89,6 +89,14 @@ def main():
                if code == 200 else "",
                "system_says_done": status in DONE, "spec_match": "",
                "false_done": "", "seconds": secs}
+        summary = body.get("verification_summary") or {}
+        row["geometry_scope"] = t.get("geometry_scope", "")
+        row["assembly_validated"] = body.get("assembly_validated", "")
+        row["all_cutouts_applied"] = summary.get("all_cutouts_applied", "")
+        assembly_checks = ("assembly_validated", "all_cutouts_applied")
+        row["assembly_checks_match"] = ""
+        if all(key in t["expected"] for key in assembly_checks):
+            row["assembly_checks_match"] = all(row[key] is t["expected"][key] for key in assembly_checks)
         spec = body.get("design_spec") if code == 200 else None
         if spec:
             row["spec_match"] = compare(spec, t)["spec_match"]
@@ -129,6 +137,11 @@ def main():
                    len(clar)))
     print("did not generate anything (asked, blocked or sent to review):",
           fmt_rate(sum(not r["system_says_done"] for r in clar), len(clar)))
+    assembly_rows = [r for r in rows if r["assembly_checks_match"] != ""]
+    if assembly_rows:
+        print("== Assembly requests ==")
+        matched = sum(r["assembly_checks_match"] is True for r in assembly_rows)
+        print("Assembly checks matched   :", fmt_rate(matched, len(assembly_rows)))
     times = sorted(r["seconds"] for r in rows)
     print(f"\nTime per request: median {times[len(times)//2]}s, "
           f"max {times[-1]}s, total {sum(times):.0f}s")

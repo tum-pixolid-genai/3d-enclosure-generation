@@ -1,0 +1,69 @@
+{
+  "benchmark_version": "pi4-assembly-0.1",
+  "n_tasks": 3,
+  "tasks": [
+    {
+      "task_id": "BM-PI4-ASM-001",
+      "board_id": "raspberry_pi_4",
+      "category": "screwed_lid_automatic_cutouts",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-ASM-001",
+        "request_text": "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid and automatic port openings.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null,
+        "needs_clarification": false,
+        "assembly_validated": true,
+        "all_cutouts_applied": true
+      }
+    },
+    {
+      "task_id": "BM-PI4-ASM-002",
+      "board_id": "raspberry_pi_4",
+      "category": "screwed_lid_automatic_cutouts",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-ASM-002",
+        "request_text": "Make a rectangular case for Raspberry Pi 4 with automatic port cutouts and a screwed lid.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": null,
+        "needs_clarification": false,
+        "assembly_validated": true,
+        "all_cutouts_applied": true
+      }
+    },
+    {
+      "task_id": "BM-PI4-ASM-003",
+      "board_id": "raspberry_pi_4",
+      "category": "screwed_lid_automatic_cutouts",
+      "difficulty": "easy",
+      "request": {
+        "task_id": "BM-PI4-ASM-003",
+        "request_text": "Create a rectangular case for Raspberry Pi 4 with a screwed lid, STEP-based port cutouts, and 2 mm wall thickness.",
+        "language": "en"
+      },
+      "expected": {
+        "board_id": "raspberry_pi_4",
+        "lid": "screwed",
+        "ports": [],
+        "wall_mount_holes": 0,
+        "wall_thickness_mm": 2.0,
+        "needs_clarification": false,
+        "assembly_validated": true,
+        "all_cutouts_applied": true
+      }
+    }
+  ]
+}

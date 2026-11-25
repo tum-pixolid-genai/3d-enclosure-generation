@@ -339,7 +339,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-016",
@@ -371,7 +372,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-017",
@@ -399,7 +401,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-018",
@@ -431,7 +434,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-019",
@@ -459,7 +463,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-020",
@@ -491,7 +496,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-021",
@@ -519,7 +525,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-022",
@@ -547,7 +554,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-023",
@@ -579,7 +587,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-024",
@@ -611,7 +620,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-025",
@@ -639,7 +649,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-026",
@@ -671,7 +682,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-027",
@@ -703,7 +715,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-028",
@@ -731,7 +744,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-029",
@@ -759,7 +773,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-030",
@@ -791,7 +806,8 @@
         ],
         "wall_mount_holes": 0,
         "wall_thickness_mm": null
-      }
+      },
+      "geometry_scope": "unsupported_user_selected_opening_sides"
     },
     {
       "task_id": "BM-PI4-031",

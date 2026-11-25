@@ -163,3 +163,46 @@ The scripts use only the Python standard library (running the Agent also needs `
 
 Claude (Anthropic) assisted with drafting the benchmark generator, baseline, statistics scripts
 and protocol text. Xiaolong Wen reviewed the output and is responsible for it.
+
+## Supplemental Pi 4 assembly run (25 Nov 2026)
+
+Three new requests were sent to `POST /design` on the local assembly-enabled
+Backend now committed as `503e2a7` on `integration/pi4-assembly`, using Ollama with
+`qwen3:4b-instruct` and the Raspberry Pi 4 reference STEP. Each request asked for
+a screwed lid and automatic cutouts, with default or explicit 2 mm walls.
+
+| Metric | Result |
+| --- | --- |
+| Returned design spec matched | 3/3 |
+| Backend returned `generated` | 3/3 |
+| Assembly validated and all cutouts applied | 3/3 |
+
+The [supplemental tasks](../benchmark/pi4_assembly_tasks.json) and
+[raw run results](../stats/backend_qwen_pi4_assembly_results.csv) have their
+own cohort. The earlier 50-task results use their original denominators.
+Physical assembly and printing were not tested.
+
+## Original 50-task Pi 4 rerun (25 Nov 2026)
+
+The original 50 prompts were rerun on the same local Windows Backend and Qwen
+configuration as the supplemental cohort. All 50 returned HTTP 200. The prior
+run was on a MacBook, so the comparison below uses per-task outcomes and omits
+timing comparisons across machines.
+
+| Metric | 23 Nov run | 25 Nov rerun |
+| --- | --- | --- |
+| Standard task design spec matched | 46/46 | 46/46 |
+| Standard task returned `generated` or `generated_with_warnings` | 1/46 | 2/46 |
+| Standard task returned `unsupported` | 45/46 | 44/46 |
+| Anomalous task returned `needs_clarification` | 1/4 | 1/4 |
+| Anomalous task stopped before generation | 4/4 | 4/4 |
+
+BM-PI4-003, the screwed-lid request, was the only task whose status changed.
+It returned `generated` with the assembly validated and all cutouts applied.
+The open enclosure BM-PI4-004 still generated with warnings. All 16 tasks
+tagged for user-selected opening sides returned `unsupported`. For the four
+anomalous tasks, BM-PI4-047 asked for clarification, BM-PI4-049 required review,
+and BM-PI4-048 and BM-PI4-050 were unsupported in both runs.
+
+Raw data are in the [25 Nov rerun CSV](../stats/backend_qwen_pi4_regression_results.csv)
+and the [23 Nov original CSV](../stats/backend_qwen_results.csv).
