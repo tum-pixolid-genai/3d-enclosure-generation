@@ -6,14 +6,21 @@ else:
     from agent import extract_design
 
 
-def unsupported_features(design):
+def unsupported_features(design, *, assembly_wall_thickness_mm=None):
     issues = []
     if design["board_id"] not in (None, "raspberry_pi_4"):
         issues.append({"code": "unsupported_board", "board_id": design["board_id"]})
     if design["case_shape"] not in ("rectangular", "unspecified"):
         issues.append({"code": "unsupported_shape", "shape": design["case_shape"]})
     if design["lid"]["present"] is True:
-        issues.append({"code": "lid", "style": design["lid"]["style"]})
+        if assembly_wall_thickness_mm is None or design["lid"]["style"] != "screwed":
+            issues.append({"code": "lid", "style": design["lid"]["style"]})
+        elif design["wall_thickness_mm"] not in (None, assembly_wall_thickness_mm):
+            issues.append({
+                "code": "assembly_wall_thickness",
+                "requested_mm": design["wall_thickness_mm"],
+                "supported_mm": assembly_wall_thickness_mm,
+            })
     for port in design["port_requirements"]:
         issues.append({"code": "port_opening", **port})
     count = design["mounting"]["wall_mount_hole_count"]
@@ -26,7 +33,7 @@ def feature_key(issue):
     return issue["code"], issue.get("port_type"), issue.get("requested_side")
 
 
-def check_capability(design, *, request=None):
+def check_capability(design, *, request=None, assembly_wall_thickness_mm=None):
     """Keep unsupported CAD features, user questions, and review reasons distinct.
 
     Both arguments should already have passed the v0.1 validators. Without
@@ -34,11 +41,15 @@ def check_capability(design, *, request=None):
     it cannot authorize generation. The Mock is the source cross-check for the
     narrow automatic path and never replaces the LLM's extracted fields.
     """
-    source_draft = extract_design(request) if request is not None else None
-    issues = unsupported_features(design)
+    allow_assembly = assembly_wall_thickness_mm is not None
+    source_draft = (
+        extract_design(request, allow_assembly=allow_assembly)
+        if request is not None else None
+    )
+    issues = unsupported_features(design, assembly_wall_thickness_mm=assembly_wall_thickness_mm)
     if source_draft is not None:
         detected = {feature_key(issue) for issue in issues}
-        for issue in unsupported_features(source_draft):
+        for issue in unsupported_features(source_draft, assembly_wall_thickness_mm=assembly_wall_thickness_mm):
             if feature_key(issue) not in detected:
                 issues.append({**issue, "source": "request_cross_check"})
                 detected.add(feature_key(issue))
@@ -47,8 +58,14 @@ def check_capability(design, *, request=None):
     review = []
     if design["board_id"] is None or design["case_shape"] == "unspecified":
         review.append("Board and enclosure shape must be known.")
-    if design["lid"] != {"present": False, "style": "unspecified"}:
-        review.append("The automatic path requires an explicit no-lid request.")
+    supported_lids = [{"present": False, "style": "unspecified"}]
+    if allow_assembly:
+        supported_lids.append({"present": True, "style": "screwed"})
+    if design["lid"] not in supported_lids:
+        review.append(
+            "Specify either no lid or a screwed lid." if allow_assembly
+            else "The automatic path requires an explicit no-lid request."
+        )
     if source_draft is None:
         review.append("The original request is required for automatic generation.")
     elif source_draft["needs_clarification"]:

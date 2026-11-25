@@ -34,6 +34,9 @@ take priority over plausible design defaults:
   to every named port that it applies to. Use "unspecified" or null for
   unprovided sides or counts respectively. Prefer a clarification over a
   guess when a direction, count, or scope is genuinely ambiguous.
+- For automatic port openings or STEP-based port cutouts with no named ports,
+  leave port_requirements empty. The backend derives those openings from the
+  reference STEP. Keep any explicitly named ports in the array.
 - An explicitly port-free case has an empty port_requirements array. For
   a named port exclusion, omit the excluded port from that array and ask
   a specific question noting that the current schema cannot represent

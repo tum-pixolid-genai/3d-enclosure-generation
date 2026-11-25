@@ -7,6 +7,7 @@ from agent.agent import PROJECT_DIR, extract_design, load_validator
 from agent.capability_check import check_capability
 from agent.hardened_agent import HardenedAgent
 from agent.llm_agent import PORT, AgentError, LLMAgent
+from geometry.checks import DEFAULT_WALL_THICKNESS_MM
 
 # Load the Agent's input and output JSON Schemas
 request_validator = load_validator(
@@ -37,11 +38,16 @@ def run_agent(agent_request: dict) -> tuple[dict, dict]:
 
     if text_agent is not None:
         try:
-            extraction = text_agent.extract(agent_request)
+            extraction = text_agent.extract(
+                agent_request, assembly_wall_thickness_mm=DEFAULT_WALL_THICKNESS_MM,
+            )
         except ValidationError as error:
             raise AgentError("invalid_design", error.message) from error
         return extraction.design_spec, extraction.capability
 
-    design_spec = extract_design(agent_request)
+    design_spec = extract_design(agent_request, allow_assembly=True)
     design_validator.validate(design_spec)
-    return design_spec, check_capability(design_spec, request=agent_request)
+    return design_spec, check_capability(
+        design_spec, request=agent_request,
+        assembly_wall_thickness_mm=DEFAULT_WALL_THICKNESS_MM,
+    )

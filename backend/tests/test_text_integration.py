@@ -12,11 +12,12 @@ from backend import agent_service, geometry_service, main
 
 
 PI4_PROMPT = "Design a rectangular enclosure for Raspberry Pi 4 with no lid."
+SCREWED_LID_PROMPT = "Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid"
 
 
 def fixture_chat(payload):
     request = json.loads(payload["messages"][-1]["content"])
-    draft = extract_design({**request, "task_id": "model-fixture"})
+    draft = extract_design({**request, "task_id": "model-fixture"}, allow_assembly=True)
     model_fields = {
         key: value for key, value in draft.items() if key not in PROGRAM_FIELDS
     }
@@ -72,6 +73,38 @@ def test_t004_stops_before_geometry(mode, monkeypatch, tmp_path):
         with pytest.raises(HTTPException) as failure:
             route(result["task_id"])
         assert failure.value.status_code == 404
+
+
+@pytest.mark.parametrize("mode", ["mock", "llm_fixture"])
+def test_screwed_lid_routes_through_assembly(mode, monkeypatch):
+    text_agent = HardenedAgent(LLMAgent(chat=fixture_chat)) if mode == "llm_fixture" else None
+    monkeypatch.setattr(agent_service, "text_agent", text_agent)
+
+    def blocked_assembly(task_id):
+        return {"task_id": task_id, "status": "geometry_blocked", "assembly_validated": False}
+
+    monkeypatch.setattr(main, "generate_pi4_assembly", blocked_assembly)
+    result = main.create_design(main.DesignRequest(
+        prompt=f"{SCREWED_LID_PROMPT}, automatic port cutouts, and 2 mm wall thickness.",
+    ))
+    assert result["status"] == "geometry_blocked"
+    assert result["capability"]["allow_geometry"] is True
+    assert result["design_spec"]["wall_thickness_mm"] == 2
+    assert result["model_url"] is None
+    assert "downloads" not in result
+
+
+@pytest.mark.parametrize(("requirements", "issue"), [
+    (" and 3 mm wall thickness", "assembly_wall_thickness"),
+    (" and HDMI openings on the left", "port_opening"),
+    (" and two wall-mount holes", "external_wall_mount_holes"),
+])
+def test_screwed_lid_unsupported_requirements_stop_before_assembly(requirements, issue, monkeypatch):
+    monkeypatch.setattr(agent_service, "text_agent", None)
+    result = main.create_design(main.DesignRequest(prompt=f"{SCREWED_LID_PROMPT}{requirements}."))
+    assert result["status"] == "unsupported"
+    assert [item["code"] for item in result["capability"]["unsupported"]] == [issue]
+    assert "downloads" not in result
 
 
 @pytest.mark.parametrize(

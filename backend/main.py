@@ -7,7 +7,9 @@ from agent.llm_agent import AgentError
 from backend.agent_service import run_agent
 from pathlib import Path
 from backend.geometry_service import run_geometry, OUTPUT_DIR
-from backend.pi4_assembly_routes import router as pi4_assembly_router
+from backend.pi4_assembly_routes import (
+    generate_pi4_assembly, pi4_artifact_path, router as pi4_assembly_router,
+)
 import re
 
 from fastapi.responses import FileResponse
@@ -79,6 +81,14 @@ def create_design(request: DesignRequest):
         return response
 
     # Step 5: Call Geometry
+    if design_spec["lid"]["present"] is True:
+        result = generate_pi4_assembly(task_id)
+        return {
+            **result,
+            "design_spec": design_spec,
+            "capability": capability,
+            "model_url": f"/design/{task_id}/model.stl" if result["assembly_validated"] else None,
+        }
     geometry_result = run_geometry(design_spec)
 
     # Step 6: Handle geometry validation failures
@@ -137,6 +147,8 @@ def download_design(task_id: str):
     file_path = OUTPUT_DIR / f"{task_id}.step"
 
     if not file_path.is_file():
+        file_path = pi4_artifact_path(task_id, "enclosure")
+    if not file_path.is_file():
         raise HTTPException(
             status_code=404,
             detail="STEP file not found"
@@ -162,6 +174,8 @@ def get_design_stl(task_id: str):
 
     # Find STL file
     file_path = OUTPUT_DIR / f"{task_id}.stl"
+    if not file_path.is_file():
+        file_path = pi4_artifact_path(task_id, "enclosure_stl")
 
     if not file_path.is_file():
         raise HTTPException(

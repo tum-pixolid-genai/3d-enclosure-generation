@@ -40,6 +40,7 @@ def clause(pattern):
 SEPARATOR_PATTERN = re.compile(SEPARATOR)
 LID = clause(r"(?:a |the )?(?:(?P<style>removable|snap-fit|screwed) )?lid")
 NO_LID = clause(r"(?:no |without )(?:a |the |any )?lid")
+AUTO_PORTS = clause(r"(?:automatic (?:port openings|port cutouts)|step-based port cutouts)")
 PORTS = clause(
     rf"(?P<negative>no |without )?(?:any )?(?:accessible )?(?P<ports>{PORT_LIST})"
     rf"(?: (?:openings?|ports?|access))?(?: (?:on|at) (?:the )?(?P<side>{SIDE})(?: side)?)?"
@@ -79,7 +80,7 @@ def load_validator(path):
     return Draft202012Validator(schema)
 
 
-def parse_requirements(text, questions):
+def parse_requirements(text, questions, *, allow_assembly=False):
     lid_presence = set()
     lid_styles = set()
     port_sides = {}
@@ -88,6 +89,7 @@ def parse_requirements(text, questions):
     wall_thicknesses = set()
     unresolved_clauses = []
     ambiguous_negation = False
+    automatic_ports = False
 
     while text:
         match = NO_LID.match(text)
@@ -97,6 +99,8 @@ def parse_requirements(text, questions):
             lid_presence.add(True)
             if match["style"]:
                 lid_styles.add(LID_STYLES[match["style"]])
+        elif allow_assembly and not ambiguous_negation and (match := AUTO_PORTS.match(text)):
+            automatic_ports = True
         elif (match := PORTS.match(text)) and (match["negative"] or not ambiguous_negation):
             for port in re.findall(PORT_TYPE, match["ports"]):
                 if match["negative"]:
@@ -143,6 +147,8 @@ def parse_requirements(text, questions):
         lid = {"present": None, "style": "unspecified"}
     else:
         lid = {"present": next(iter(lid_presence), None), "style": next(iter(lid_styles), "unspecified")}
+    if automatic_ports and lid != {"present": True, "style": "screwed"}:
+        questions.append("Should the enclosure use a screwed lid with automatic port cutouts?")
 
     ports = []
     unresolved_ports = set(re.findall(rf"\b{PORT_TYPE}\b", unresolved))
@@ -174,7 +180,7 @@ def parse_requirements(text, questions):
     }
 
 
-def extract_design(request):
+def extract_design(request, *, allow_assembly=False):
     """Extract a draft from a Schema-validated request without reading or writing files."""
     questions = []
     board_id = None
@@ -199,7 +205,7 @@ def extract_design(request):
         if tail and not requirements:
             questions.append("What features should the enclosure include?")
 
-    design = parse_requirements(requirements, questions)
+    design = parse_requirements(requirements, questions, allow_assembly=allow_assembly)
     return {
         "schema_version": "0.1",
         "task_id": request["task_id"],

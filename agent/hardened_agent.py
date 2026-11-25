@@ -20,12 +20,15 @@ class HardenedAgent:
     def __init__(self, model: LLMAgent):
         self.model = model
 
-    def extract(self, request):
+    def extract(self, request, *, assembly_wall_thickness_mm=None):
         text = request.get("request_text") if isinstance(request, dict) else None
         if isinstance(text, str) and len(text) > 4096:
             raise AgentError("invalid_request", "The experimental request limit is 4096 characters.")
         raw = self.model.extract(request)
         design, normalized_request, changes, issues = ground_draft(request, raw.design_spec)
         self.model.design_validator.validate(design)
-        gate = check_capability(design, request=normalized_request)
+        gate = check_capability(
+            design, request=normalized_request,
+            assembly_wall_thickness_mm=assembly_wall_thickness_mm,
+        )
         return CheckedExtraction(raw, design, gate, changes, issues)

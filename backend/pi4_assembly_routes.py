@@ -27,12 +27,15 @@ ARTIFACTS = {
 
 @router.post("")
 def create_pi4_assembly():
+    return generate_pi4_assembly(f"pi4_{uuid4().hex}")
+
+
+def generate_pi4_assembly(task_id: str):
     default_reference = OUTPUT_DIR / "reference-models" / "raspberry-pi-4.step"
     reference = Path(getenv("PIXOLID_PI4_REFERENCE_STEP") or default_reference)
     if not reference.is_file():
         raise HTTPException(status_code=503, detail="Pi 4 reference STEP is unavailable.")
 
-    task_id = f"pi4_{uuid4().hex}"
     assemblies_dir = OUTPUT_DIR / "pi4_assemblies"
     try:
         assemblies_dir.mkdir(parents=True, exist_ok=True)
@@ -79,11 +82,15 @@ def create_pi4_assembly():
 
 @router.get("/{task_id}/{artifact}")
 def download_pi4_artifact(
-    task_id: Annotated[str, PathParameter(pattern=r"^pi4_[0-9a-f]{32}$")],
+    task_id: Annotated[str, PathParameter(pattern=r"^(pi4|design)_[0-9a-f]{32}$")],
     artifact: Literal["enclosure", "lid", "report", "enclosure_stl", "lid_stl"],
 ):
     filename, media_type = ARTIFACTS[artifact]
-    path = OUTPUT_DIR / "pi4_assemblies" / task_id / filename
+    path = pi4_artifact_path(task_id, artifact)
     if not path.is_file():
         raise HTTPException(status_code=404, detail="Pi 4 assembly artifact not found.")
     return FileResponse(path, filename=filename, media_type=media_type)
+
+
+def pi4_artifact_path(task_id: str, artifact: str) -> Path:
+    return OUTPUT_DIR / "pi4_assemblies" / task_id / ARTIFACTS[artifact][0]

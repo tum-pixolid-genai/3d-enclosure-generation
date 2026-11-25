@@ -91,6 +91,19 @@ Download the [Raspberry Pi 4 Model B layout STEP](https://www.innerscene.com/too
 Save it as `../pixolid-demo-outputs/reference-models/raspberry-pi-4.step`,
 or set `PIXOLID_PI4_REFERENCE_STEP` to the absolute path of the downloaded file.
 
+Submit this text request to `POST /design` to generate the assembly:
+
+    {"prompt":"Design a rectangular enclosure for Raspberry Pi 4 with a screwed lid, automatic port cutouts, and 2 mm wall thickness."}
+
+This path supports rectangular Pi 4 enclosures with a screwed lid. Wall
+thickness can be omitted to use 2 mm or explicitly set to 2 mm. Port cutouts
+are derived automatically from the reference STEP. A request for named ports,
+specific opening sides, external wall mounting holes, another lid style, or
+another wall thickness is outside the supported assembly scope. The assembly
+response also carries the extracted `design_spec` and `capability` decision.
+The usual text-design download and preview URLs serve the enclosure, and
+`downloads` includes the separate lid and verification report.
+
 In Swagger, call `POST /design/pi4-assembly` with no request body. This route
 uses the reference STEP to generate automatic port cutouts with 0.5 mm
 clearance and a screw-fastened lid. It runs without Ollama.
